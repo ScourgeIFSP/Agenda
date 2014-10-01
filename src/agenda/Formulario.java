@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 public class Formulario extends JFrame {
 
     PainelPrincipal painelPrincipal = new PainelPrincipal();
-    PainelMenu painelmenu = new PainelMenu();
+    PainelMenu painelMenu = new PainelMenu();
     PainelCima painelcima = new PainelCima();
 
     public Formulario() {
@@ -36,7 +36,7 @@ public class Formulario extends JFrame {
         cons.fill = GridBagConstraints.VERTICAL;
         cons.ipadx = 30;
         cons.gridheight = 1;
-        add(painelmenu,cons);
+        add(painelMenu,cons);
   
         
         cons.weighty =0;

@@ -1,16 +1,9 @@
 package agenda;
 
-import java.awt.Color;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
-import javax.swing.BorderFactory;
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import java.awt.*;
+import javax.swing.*;
 
-public class PainelPrincipal extends JPanel
+public class PainelFormulario extends JPanel
 {
     private JTextField txtnome = new JTextField();
     private JTextField txtendereco = new JTextField();
@@ -21,14 +14,14 @@ public class PainelPrincipal extends JPanel
     private JTextField txtcpf = new JTextField();
    
     
-    public PainelPrincipal()
+    public PainelFormulario()
     {   
             
        this.setLayout(new GridBagLayout()); 
-       this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+       //this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
         AddComponentes("Nome", txtnome, this);
-        AddComponentes("Endere�o", txtendereco, this);
+        AddComponentes("Endereço", txtendereco, this);
         AddComponentes("Bairro", txtbairro, this);
         AddComponentes("Cidade", txtcidade, this);
         AddComponentes("Telefone", txttelefone, this);

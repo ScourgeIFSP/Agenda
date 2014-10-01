@@ -10,7 +10,6 @@ public class Agenda
     private String cep;
     private String cpf;
     
-    
     public Agenda()
     {
         nome = "";
@@ -77,10 +76,4 @@ public class Agenda
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
-
-   
-    
-    
-    
-    
 }

@@ -1,45 +1,68 @@
 package agenda;
 
-import java.awt.Color;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 
-public class PainelMenu extends JPanel {
-
+public class PainelMenu extends JPanel 
+{
+    private CardLayout cardLayout;
+    private JPanel painelPrincipal;
+    private String listaString = "lista", formularioString = "formulario";
     private JButton btnAdicionar = new JButton("Adicionar");
     private JButton btnEditar = new JButton("Editar");
     private JButton btnExcluir = new JButton("Excluir");
     private JButton btnSair = new JButton("Sair");
 
-    public PainelMenu() {
-
+    public PainelMenu(JPanel painelPrincipal) 
+    {
         this.setLayout(new GridBagLayout());
         this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-
-        AddComponentes(btnAdicionar, this);
-        AddComponentes(btnEditar, this);
-        AddComponentes(btnExcluir, this);
-        AddComponentes(btnSair, this);
-
+        
+        this.cardLayout = cardLayout;
+        this.painelPrincipal = painelPrincipal;
+        this.listaString = listaString;
+        this.formularioString = formularioString;
+        
+        AddComponentes(btnAdicionar);
+        AddComponentes(btnEditar);
+        AddComponentes(btnExcluir);
+        AddComponentes(btnSair);
+        
+        adcAcoes();
     }
 
-    private void AddComponentes(JComponent componente, JPanel painel) {
+    private void AddComponentes(JComponent componente) 
+    {
         GridBagConstraints cons = new GridBagConstraints();
 
-         cons.insets = new Insets(2, 2, 2, 2);
+        cons.insets = new Insets(2, 2, 2, 2);
         cons.fill = GridBagConstraints.HORIZONTAL;
         cons.weightx = 1;
         //cons.weighty = 1;
         cons.gridwidth = GridBagConstraints.REMAINDER;
         cons.ipady = 15;
-         painel.add(componente, cons);
+        this.add(componente, cons);
     }
-
+    
+    private void adcAcoes()
+    {
+        btnAdicionar.addActionListener(new ActionListener() 
+        {
+            public void actionPerformed(ActionEvent e) 
+            {
+                CardLayout cl = (CardLayout)(painelPrincipal.getLayout());
+                cl.show(painelPrincipal, formularioString);
+            }
+        });
+        
+        btnSair.addActionListener(new ActionListener() 
+        {
+            public void actionPerformed(ActionEvent e) 
+            {
+                
+            }
+        });
+    }
 
 }

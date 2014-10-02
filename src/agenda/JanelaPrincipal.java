@@ -9,9 +9,9 @@ public class JanelaPrincipal extends JFrame
     String formularioString = "formulario";
     private final Container janela = this.getContentPane();
     private JPanel painelPrincipal = new JPanel();
-    private PainelFormulario painelFormulario = new PainelFormulario();
     private PainelMenu painelMenu = new PainelMenu(painelPrincipal);
     private PainelCima painelCima = new PainelCima();
+    private PainelFormulario painelFormulario = new PainelFormulario();
     private PainelLista painelLista = new PainelLista();
 
     public JanelaPrincipal() 

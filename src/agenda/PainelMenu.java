@@ -6,9 +6,8 @@ import javax.swing.*;
 
 public class PainelMenu extends JPanel 
 {
-    private CardLayout cardLayout;
     private JPanel painelPrincipal;
-    private String listaString = "lista", formularioString = "formulario";
+    private String formularioString = "formulario";
     private JButton btnAdicionar = new JButton("Adicionar");
     private JButton btnEditar = new JButton("Editar");
     private JButton btnExcluir = new JButton("Excluir");
@@ -19,10 +18,7 @@ public class PainelMenu extends JPanel
         this.setLayout(new GridBagLayout());
         this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         
-        this.cardLayout = cardLayout;
         this.painelPrincipal = painelPrincipal;
-        this.listaString = listaString;
-        this.formularioString = formularioString;
         
         AddComponentes(btnAdicionar);
         AddComponentes(btnEditar);

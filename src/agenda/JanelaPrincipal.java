@@ -16,7 +16,7 @@ public class JanelaPrincipal extends JFrame
 
     public JanelaPrincipal() 
     {
-        super("Ruedo Viado");
+        super("Agenda");
         this.setSize(700, 500);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);

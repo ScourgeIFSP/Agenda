@@ -9,4 +9,4 @@ manifest.mf
 .classpath
 .project
 
-/dist/
+dist

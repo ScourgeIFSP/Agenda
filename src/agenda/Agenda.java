@@ -20,7 +20,8 @@ public class Agenda
         cep="";
         cpf="";
     }
-
+    
+    //getters
     public String getNome() {
         return nome;
     }

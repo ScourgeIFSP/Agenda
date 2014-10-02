@@ -6,13 +6,12 @@ import javax.swing.*;
 public class JanelaPrincipal extends JFrame 
 {
     // Variáveis globais
-    private String contatosString = "contatos", formularioString = "formulario";
     private final Container janela = this.getContentPane();
-    private JPanel painelPrincipal = new JPanel();
-    private PainelMenu painelMenu = new PainelMenu(painelPrincipal);
-    private PainelCima painelImagem = new PainelCima();
-    private PainelLista painelLista = new PainelLista();
-    private PainelFormulario painelFormulario = new PainelFormulario();
+    private JPanel painelPrincipal;
+    private PainelMenu painelMenu;
+    private PainelImagem painelImagem;
+    private PainelAdicionar painelAdicionar;
+    private PainelLista painelLista;
     
     // Contrutor
     public JanelaPrincipal() 
@@ -26,39 +25,45 @@ public class JanelaPrincipal extends JFrame
         adcComponentes();
     }
     
-    // Adiciona componentes
+    // Adiciona componentes na janela
     private void adcComponentes()
     {
         GridBagConstraints cons = new GridBagConstraints();
         
+        painelPrincipal = new JPanel();
+        painelMenu = new PainelMenu(painelPrincipal);
+        painelImagem = new PainelImagem();
+        painelAdicionar = new PainelAdicionar();
+        painelLista = new PainelLista();
+        
         // Painel principal
         painelPrincipal.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         painelPrincipal.setLayout(new CardLayout());
-        cons.weighty =2;
-        cons.weightx =1;
-        cons.gridx =1;
-        cons.fill = GridBagConstraints.BOTH;
+        cons.insets = new Insets(5,5,5,5);
+        cons.weighty = 1;
+        cons.weightx = 1;
+        cons.gridx = 1;
         cons.gridheight = GridBagConstraints.REMAINDER;
-        cons.insets = new Insets(3,2,3,2);
+        cons.fill = GridBagConstraints.BOTH;
         janela.add(painelPrincipal, cons);
-            painelPrincipal.add(painelLista, contatosString);
-            painelPrincipal.add(painelFormulario, formularioString);
+            painelPrincipal.add(painelLista, CardsStrings.getListaString());
+            painelPrincipal.add(painelAdicionar, CardsStrings.getAdicionarContatosString());
         
         // Painel de menu
-        cons.weightx =0;
-        cons.weighty = 0;
+        cons.insets = new Insets(5,5,5,0);
+        cons.weightx = 0;
         cons.gridy = 1;
         cons.gridx = 0;
-        cons.fill = GridBagConstraints.VERTICAL;
-        cons.ipadx = 30;
+        cons.ipadx = 15;
         cons.gridheight = 1;
         janela.add(painelMenu,cons);
         
         // Painel de imagem
-        cons.weighty =0;
+        cons.insets = new Insets(5,5,0,0);
+        cons.weighty = 0;
+            // Temporário
+            cons.ipady = 130;
         cons.gridy = 0;
-        cons.ipady = 130;       
-        cons.fill = GridBagConstraints.BOTH;
         janela.add(painelImagem,cons);
     }
 }

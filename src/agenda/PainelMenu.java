@@ -7,13 +7,12 @@ import javax.swing.*;
 public class PainelMenu extends JPanel 
 {
     // Variáveis globais
-    private JPanel painelPrincipal;
-    private String contatosString = "contatos", formularioString = "formulario";
-    private JButton btnContatos = new JButton("Contatos");
-    private JButton btnAdicionar = new JButton("Adicionar");
-    private JButton btnEditar = new JButton("Editar");
-    private JButton btnExcluir = new JButton("Excluir");
-    private JButton btnSair = new JButton("Sair");
+    private final JPanel painelPrincipal;
+    private JButton btnContatos;
+    private JButton btnAdicionarContatos;
+    private JButton btnEditar;
+    private JButton btnExcluir;
+    private JButton btnSair;
     
     // Contrutor
     public PainelMenu(JPanel painelPrincipal) 
@@ -23,27 +22,37 @@ public class PainelMenu extends JPanel
         
         this.painelPrincipal = painelPrincipal;
         
-        AddComponentes(btnContatos);
-        AddComponentes(btnAdicionar);
-        AddComponentes(btnEditar);
-        AddComponentes(btnExcluir);
-        AddComponentes(btnSair);
-        
+        adcComponentes();
         adcAcoes();
     }
     
     // Adiciona um componente
-    private void AddComponentes(JComponent componente) 
+    private void AddComponente(JComponent componente) 
     {
         GridBagConstraints cons = new GridBagConstraints();
 
         cons.insets = new Insets(2, 2, 2, 2);
         cons.fill = GridBagConstraints.HORIZONTAL;
         cons.weightx = 1;
-        //cons.weighty = 1;
         cons.gridwidth = GridBagConstraints.REMAINDER;
         cons.ipady = 15;
         this.add(componente, cons);
+    }
+    
+    // Adiciona componentes no painel
+    private void adcComponentes()
+    {
+        btnContatos = new JButton("<html><center>Listar<br>Contatos</center></html>");
+        btnAdicionarContatos = new JButton("<html><center>Adicionar<br>Contato</center></html>");
+        btnEditar = new JButton("Editar");
+        btnExcluir = new JButton("Excluir");
+        btnSair = new JButton("Sair");
+        
+        AddComponente(btnContatos);
+        AddComponente(btnAdicionarContatos);
+        AddComponente(btnEditar);
+        AddComponente(btnExcluir);
+        AddComponente(btnSair);
     }
     
     // Atribui ações aos botões
@@ -55,17 +64,17 @@ public class PainelMenu extends JPanel
             public void actionPerformed(ActionEvent e) 
             {
                 CardLayout cl = (CardLayout)(painelPrincipal.getLayout());
-                cl.show(painelPrincipal, contatosString);
+                cl.show(painelPrincipal, CardsStrings.getListaString());
             }
         });
         
-        btnAdicionar.addActionListener(new ActionListener() 
+        btnAdicionarContatos.addActionListener(new ActionListener() 
         {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
                 CardLayout cl = (CardLayout)(painelPrincipal.getLayout());
-                cl.show(painelPrincipal, formularioString);
+                cl.show(painelPrincipal, CardsStrings.getAdicionarContatosString());
             }
         });
         

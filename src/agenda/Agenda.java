@@ -21,7 +21,7 @@ public class Agenda
         cpf="";
     }
     
-    //getters
+    // Getters
     public String getNome() {
         return nome;
     }

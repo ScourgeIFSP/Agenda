@@ -6,13 +6,16 @@ import javax.swing.*;
 
 public class PainelMenu extends JPanel 
 {
+    // Variáveis globais
     private JPanel painelPrincipal;
-    private String formularioString = "formulario";
+    private String contatosString = "contatos", formularioString = "formulario";
+    private JButton btnContatos = new JButton("Contatos");
     private JButton btnAdicionar = new JButton("Adicionar");
     private JButton btnEditar = new JButton("Editar");
     private JButton btnExcluir = new JButton("Excluir");
     private JButton btnSair = new JButton("Sair");
-
+    
+    // Contrutor
     public PainelMenu(JPanel painelPrincipal) 
     {
         this.setLayout(new GridBagLayout());
@@ -20,6 +23,7 @@ public class PainelMenu extends JPanel
         
         this.painelPrincipal = painelPrincipal;
         
+        AddComponentes(btnContatos);
         AddComponentes(btnAdicionar);
         AddComponentes(btnEditar);
         AddComponentes(btnExcluir);
@@ -27,7 +31,8 @@ public class PainelMenu extends JPanel
         
         adcAcoes();
     }
-
+    
+    // Adiciona um componente
     private void AddComponentes(JComponent componente) 
     {
         GridBagConstraints cons = new GridBagConstraints();
@@ -41,10 +46,22 @@ public class PainelMenu extends JPanel
         this.add(componente, cons);
     }
     
+    // Atribui ações aos botões
     private void adcAcoes()
     {
+        btnContatos.addActionListener(new ActionListener() 
+        {
+            @Override
+            public void actionPerformed(ActionEvent e) 
+            {
+                CardLayout cl = (CardLayout)(painelPrincipal.getLayout());
+                cl.show(painelPrincipal, contatosString);
+            }
+        });
+        
         btnAdicionar.addActionListener(new ActionListener() 
         {
+            @Override
             public void actionPerformed(ActionEvent e) 
             {
                 CardLayout cl = (CardLayout)(painelPrincipal.getLayout());
@@ -54,6 +71,7 @@ public class PainelMenu extends JPanel
         
         btnSair.addActionListener(new ActionListener() 
         {
+            @Override
             public void actionPerformed(ActionEvent e) 
             {
                 System.exit(0);

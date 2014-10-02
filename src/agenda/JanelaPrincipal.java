@@ -6,7 +6,7 @@ import javax.swing.*;
 public class JanelaPrincipal extends JFrame 
 {
     // Variáveis globais
-    String listaString = "lista", formularioString = "formulario";
+    private String contatosString = "contatos", formularioString = "formulario";
     private final Container janela = this.getContentPane();
     private JPanel painelPrincipal = new JPanel();
     private PainelMenu painelMenu = new PainelMenu(painelPrincipal);
@@ -41,7 +41,7 @@ public class JanelaPrincipal extends JFrame
         cons.gridheight = GridBagConstraints.REMAINDER;
         cons.insets = new Insets(3,2,3,2);
         janela.add(painelPrincipal, cons);
-            painelPrincipal.add(painelLista, listaString);
+            painelPrincipal.add(painelLista, contatosString);
             painelPrincipal.add(painelFormulario, formularioString);
         
         // Painel de menu

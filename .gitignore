@@ -1,13 +1,3 @@
-nbproject
-build
-bin
-lib
-
-build.xml
-manifest.mf
-
-.classpath
-.project
-
-dist
-/nbdist/
+/*
+!/src
+!README.md

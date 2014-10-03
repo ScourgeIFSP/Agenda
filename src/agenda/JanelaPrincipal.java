@@ -17,7 +17,7 @@ public class JanelaPrincipal extends JFrame
     public JanelaPrincipal() 
     {
         super("Agenda");
-        this.setSize(700, 500);
+        this.setMinimumSize(new Dimension(700, 500));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         janela.setLayout(new GridBagLayout());
@@ -57,13 +57,5 @@ public class JanelaPrincipal extends JFrame
         cons.ipadx = 15;
         cons.gridheight = 1;
         janela.add(painelMenu,cons);
-        
-        // Painel de imagem
-        cons.insets = new Insets(5,5,0,0);
-        cons.weighty = 0;
-            // Temporário
-            cons.ipady = 130;
-        cons.gridy = 0;
-        janela.add(painelImagem,cons);
     }
 }

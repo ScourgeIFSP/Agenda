@@ -18,7 +18,6 @@ public class PainelMenu extends JPanel
     public PainelMenu(JPanel painelPrincipal) 
     {
         this.setLayout(new GridBagLayout());
-        this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         
         this.painelPrincipal = painelPrincipal;
         
@@ -31,11 +30,18 @@ public class PainelMenu extends JPanel
     {
         GridBagConstraints cons = new GridBagConstraints();
 
-        cons.insets = new Insets(2, 2, 2, 2);
+        cons.insets = new Insets(5,5,5,5);
         cons.fill = GridBagConstraints.HORIZONTAL;
         cons.weightx = 1;
         cons.gridwidth = GridBagConstraints.REMAINDER;
         cons.ipady = 15;
+        
+        if (componente == btnSair)
+        {
+            cons.weighty = 1;
+            cons.anchor = GridBagConstraints.NORTH;
+        }
+        
         this.add(componente, cons);
     }
     

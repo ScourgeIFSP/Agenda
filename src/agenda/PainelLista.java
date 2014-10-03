@@ -5,11 +5,13 @@ import javax.swing.*;
 
 public class PainelLista extends JPanel
 {
+    // Variáveis globais
     private JLabel tituloLabel;
     private JTextField buscarField;
     private JButton buscarButton;
     private JScrollPane scrollContatos;
     
+    // Contrutor
     public PainelLista()
     {
         setLayout(new GridBagLayout());
@@ -17,13 +19,13 @@ public class PainelLista extends JPanel
         
     }
     
+    // Adiciona componentes no painel
     private void adcComponentes()
     {
         GridBagConstraints cons = new GridBagConstraints();
-        
+                
+        // Título
         tituloLabel = new JLabel("Contatos:");
-        String[] lista = {"Contato 1", "Contato 2", "Contato 3", "Contato 4"};
-        
         tituloLabel.setFont(new Font(null, Font.BOLD, 20));
         cons.insets = new Insets(10, 10, 15, 10);
         cons.weightx = 1;
@@ -34,6 +36,8 @@ public class PainelLista extends JPanel
         cons.ipady = 40;
         cons.fill = GridBagConstraints.HORIZONTAL;
         
+        // Lista
+        String[] lista = {"Contato 1", "Contato 2", "Contato 3", "Contato 4"};
         try
         {
             int n = lista.length;

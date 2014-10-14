@@ -9,7 +9,6 @@ public class JanelaPrincipal extends JFrame
     private final Container janela = this.getContentPane();
     private JPanel painelPrincipal;
     private PainelMenu painelMenu;
-    private PainelImagem painelImagem;
     private PainelAdicionar painelAdicionar;
     private PainelLista painelLista;
     
@@ -28,34 +27,29 @@ public class JanelaPrincipal extends JFrame
     // Adiciona componentes na janela
     private void adcComponentes()
     {
-        GridBagConstraints cons = new GridBagConstraints();
-        
+        // Definindo variáveis
         painelPrincipal = new JPanel();
         painelMenu = new PainelMenu(painelPrincipal);
-        painelImagem = new PainelImagem();
-        painelAdicionar = new PainelAdicionar();
         painelLista = new PainelLista();
+        painelAdicionar = new PainelAdicionar();
+        GridBagConstraints cons = new GridBagConstraints();
+        
+        // Painel de menu
+        cons.insets = new Insets(5,5,5,0);
+        cons.weighty = 1;
+        cons.fill = GridBagConstraints.BOTH;
+        janela.add(painelMenu,cons);
         
         // Painel principal
         painelPrincipal.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         painelPrincipal.setLayout(new CardLayout());
         cons.insets = new Insets(5,5,5,5);
-        cons.weighty = 1;
         cons.weightx = 1;
+        cons.ipadx = 0;
         cons.gridx = 1;
         cons.gridheight = GridBagConstraints.REMAINDER;
-        cons.fill = GridBagConstraints.BOTH;
         janela.add(painelPrincipal, cons);
             painelPrincipal.add(painelLista, CardsStrings.getListaString());
             painelPrincipal.add(painelAdicionar, CardsStrings.getAdicionarContatosString());
-        
-        // Painel de menu
-        cons.insets = new Insets(5,5,5,0);
-        cons.weightx = 0;
-        cons.gridy = 1;
-        cons.gridx = 0;
-        cons.ipadx = 15;
-        cons.gridheight = 1;
-        janela.add(painelMenu,cons);
     }
 }

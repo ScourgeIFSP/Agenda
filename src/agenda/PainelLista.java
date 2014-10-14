@@ -9,7 +9,8 @@ public class PainelLista extends JPanel
     private JLabel tituloLabel;
     private JTextField buscarField;
     private JButton buscarButton;
-    private JScrollPane scrollContatos;
+    private JPanel contatosPanel;
+    private JScrollPane contatosScroll;
     
     // Contrutor
     public PainelLista()
@@ -22,22 +23,25 @@ public class PainelLista extends JPanel
     // Adiciona componentes no painel
     private void adcComponentes()
     {
+        // Definindo variáveis
+        tituloLabel = new JLabel("Contatos:");
+        contatosPanel = new JPanel();
+        contatosScroll = new JScrollPane(contatosPanel);
         GridBagConstraints cons = new GridBagConstraints();
                 
         // Título
-        tituloLabel = new JLabel("Contatos:");
         tituloLabel.setFont(new Font(null, Font.BOLD, 20));
         cons.insets = new Insets(10, 10, 15, 10);
         cons.weightx = 1;
         cons.anchor = GridBagConstraints.WEST;
         this.add(tituloLabel, cons);
         
+        // Lista
+        contatosPanel.setLayout(new GridBagLayout());
         cons.insets = new Insets(5, 5, 5, 5);
         cons.ipady = 40;
         cons.fill = GridBagConstraints.HORIZONTAL;
-        
-        // Lista
-        String[] lista = {"Contato 1", "Contato 2", "Contato 3", "Contato 4"};
+        String[] lista = {"Contato 1", "Contato 2", "Contato 3", "Contato 4", "Contato 1", "Contato 2", "Contato 3", "Contato 4"};
         try
         {
             int n = lista.length;
@@ -51,12 +55,18 @@ public class PainelLista extends JPanel
                         cons.weighty = 1;
                         cons.anchor = GridBagConstraints.NORTH;
                     }
-                    this.add(btn, cons);
+                    contatosPanel.add(btn, cons);
                 } 
         }
         catch (ArrayIndexOutOfBoundsException e)
         {
             
         }
+        
+        // Scrol Lista
+        contatosScroll.setBorder(null);
+        cons.insets = new Insets(0,0,0,0);
+        cons.fill = GridBagConstraints.BOTH;
+        this.add(contatosScroll, cons);
     }
 }

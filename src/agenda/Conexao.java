@@ -1,14 +1,11 @@
 package agenda;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-
-import java.sql.SQLException;
+import java.sql.*;
 
 public class Conexao {
 	
-    private String connectionURL= "jdbc:mysql://localhost/Ruedo";
-    private String driverName = "com.mysql.jdbc.Driver"; 
+    private final String connectionURL= "jdbc:mysql://localhost/Ruedo";
+    private final String driverName = "com.mysql.jdbc.Driver"; 
     private Connection conn = null;
     
     public Conexao()
@@ -16,7 +13,7 @@ public class Conexao {
         
     }
     
-    public Connection Conecta()
+    public Connection conecta()
     {  
     	try 
     	{	
@@ -24,11 +21,15 @@ public class Conexao {
             conn = DriverManager.getConnection(connectionURL,"root","" );
             System.out.println("Conectado com Sucesso!");
             return conn;
-
         } 
-    	catch (Exception e)
+    	catch (SQLException sqle)
     	{
-            System.out.println("N�o foi possivel conectar no banco"+ e);
+            System.out.println("Não foi possivel conectar no banco"+ sqle);
+            return null;
+        }
+        catch(ClassNotFoundException cnfe)
+        {
+            System.out.println("Driver não encontrado"+ cnfe);
             return null;
         }
     }
@@ -38,11 +39,11 @@ public class Conexao {
     	try 
     	{
             conn.close();
-            System.out.println("Conex�o Encerrada.");
+            System.out.println("Conexão Encerrada.");
         } 
-    	catch (SQLException ex) 
+    	catch (SQLException sqle) 
     	{
-            throw new SQLException(ex.getMessage());
+            throw new SQLException(sqle.getMessage());
         }
     }
 }

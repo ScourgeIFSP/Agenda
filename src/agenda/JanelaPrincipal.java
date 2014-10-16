@@ -32,16 +32,15 @@ public class JanelaPrincipal extends JFrame
         painelMenu = new PainelMenu(painelPrincipal);
         painelLista = new PainelLista();
         painelAdicionar = new PainelAdicionar();
-        GridBagConstraints cons = new GridBagConstraints();
         
         // Painel de menu
+        GridBagConstraints cons = new GridBagConstraints();
         cons.insets = new Insets(5,5,5,0);
         cons.weighty = 1;
         cons.fill = GridBagConstraints.BOTH;
         janela.add(painelMenu,cons);
         
         // Painel principal
-        painelPrincipal.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         painelPrincipal.setLayout(new CardLayout());
         cons.insets = new Insets(5,5,5,5);
         cons.weightx = 1;
@@ -49,7 +48,9 @@ public class JanelaPrincipal extends JFrame
         cons.gridx = 1;
         cons.gridheight = GridBagConstraints.REMAINDER;
         janela.add(painelPrincipal, cons);
-            painelPrincipal.add(painelLista, CardsStrings.getListaString());
-            painelPrincipal.add(painelAdicionar, CardsStrings.getAdicionarContatosString());
+        
+        // Adicionando cards
+        painelPrincipal.add(painelLista, CardsStrings.getListaString());
+        painelPrincipal.add(painelAdicionar, CardsStrings.getAdicionarContatosString());
     }
 }

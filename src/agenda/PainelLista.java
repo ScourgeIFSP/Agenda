@@ -1,12 +1,13 @@
 package agenda;
 
 import java.awt.*;
+import java.util.*;
 import javax.swing.*;
 
 public class PainelLista extends JPanel
 {
     // Variáveis globais
-    private JLabel tituloLabel;
+    private TituloString tituloLabel;
     private JTextField buscarField;
     private JButton buscarButton;
     private JPanel contatosPanel;
@@ -15,53 +16,49 @@ public class PainelLista extends JPanel
     // Contrutor
     public PainelLista()
     {
-        setLayout(new GridBagLayout());
-        adcComponentes();
+        this.setLayout(new GridBagLayout());
         
+        adcComponentes();
     }
     
     // Adiciona componentes no painel
     private void adcComponentes()
     {
         // Definindo variáveis
-        tituloLabel = new JLabel("Contatos:");
+        tituloLabel = new TituloString("Contatos:", this);
         contatosPanel = new JPanel();
         contatosScroll = new JScrollPane(contatosPanel);
         GridBagConstraints cons = new GridBagConstraints();
                 
         // Título
-        tituloLabel.setFont(new Font(null, Font.BOLD, 20));
-        cons.insets = new Insets(10, 10, 15, 10);
-        cons.weightx = 1;
-        cons.anchor = GridBagConstraints.WEST;
-        this.add(tituloLabel, cons);
+        tituloLabel.adicionar();
         
         // Lista
         contatosPanel.setLayout(new GridBagLayout());
+        cons.weightx = 1;
         cons.insets = new Insets(5, 5, 5, 5);
         cons.ipady = 40;
         cons.fill = GridBagConstraints.HORIZONTAL;
-        String[] lista = {"Contato 1", "Contato 2", "Contato 3", "Contato 4", "Contato 1", "Contato 2", "Contato 3", "Contato 4"};
-        try
+        java.util.List<String> lista = new ArrayList();
+        for (int i=0; i<20; i++)
         {
-            int n = lista.length;
-            for(int i=0;i<n;i++)
-                {
-                    JButton btn = new JButton(lista[i]);
-                    btn.setContentAreaFilled(false);
-                    cons.gridy=i+1;
-                    if (i==n-1)
-                    {
-                        cons.weighty = 1;
-                        cons.anchor = GridBagConstraints.NORTH;
-                    }
-                    contatosPanel.add(btn, cons);
-                } 
+            String s = "Contato ";
+            lista.add(s+i);
         }
-        catch (ArrayIndexOutOfBoundsException e)
+             
+        int size = lista.size();
+        for(int i=0;i<size;i++)
         {
-            
-        }
+            JButton btn = new JButton(lista.get(i));
+            btn.setContentAreaFilled(false);
+            cons.gridy=i+1;
+            if (i==size-1)
+            {
+                cons.weighty = 1;
+                cons.anchor = GridBagConstraints.NORTH;
+            }
+            contatosPanel.add(btn, cons);
+        } 
         
         // Scrol Lista
         contatosScroll.setBorder(null);

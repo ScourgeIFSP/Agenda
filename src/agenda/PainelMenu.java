@@ -35,18 +35,17 @@ public class PainelMenu extends JPanel
         btnExcluir = new JButton("Excluir");
         btnSair = new JButton("Sair");
         
-        addComponente(btnContatos);
-        addComponente(btnAdicionarContatos);
-        addComponente(btnEditar);
-        addComponente(btnExcluir);
-        addComponente(btnSair);
+        adcComponente(btnContatos);
+        adcComponente(btnAdicionarContatos);
+        adcComponente(btnEditar);
+        adcComponente(btnExcluir);
+        adcComponente(btnSair);
     }
     
     // Adiciona um componente
-    private void addComponente(JComponent componente) 
+    private void adcComponente(JComponent componente) 
     {
         GridBagConstraints cons = new GridBagConstraints();
-
         cons.insets = new Insets(5,5,5,5);
         cons.weightx = 1;
         cons.ipady = 15;

@@ -4,9 +4,10 @@ public class Main
 {
     public static void main(String args[])
     {
-      JanelaPrincipal form = new JanelaPrincipal();
-      form.setVisible(true);
+      JanelaPrincipal jp = new JanelaPrincipal();
+      jp.setVisible(true);
+      
       Conexao conn = new Conexao();
-      conn.Conecta();
+      conn.conecta();
     }
 }

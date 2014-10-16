@@ -7,7 +7,7 @@ import javax.swing.*;
 public class PainelMenu extends JPanel 
 {
     // Variáveis globais
-    private final JPanel painelPrincipal;
+    private final JPanel painelPrincipal = CardsStrings.getPainelPrincipal();
     private JButton btnContatos;
     private JButton btnAdicionarContatos;
     private JButton btnEditar;
@@ -15,11 +15,9 @@ public class PainelMenu extends JPanel
     private JButton btnSair;
     
     // Contrutor
-    public PainelMenu(JPanel painelPrincipal) 
+    public PainelMenu() 
     {
         this.setLayout(new GridBagLayout());
-        
-        this.painelPrincipal = painelPrincipal;
         
         adcComponentes();
         adcAcoes();
@@ -67,14 +65,12 @@ public class PainelMenu extends JPanel
     {
         btnContatos.addActionListener((ActionEvent e) ->
         {
-            CardLayout cl = (CardLayout)(painelPrincipal.getLayout());
-            cl.show(painelPrincipal, CardsStrings.getListaString());
+            CardsStrings.mostraCard(CardsStrings.getListaCard());
         });
         
         btnAdicionarContatos.addActionListener((ActionEvent e) -> 
         {
-            CardLayout cl = (CardLayout)(painelPrincipal.getLayout());
-            cl.show(painelPrincipal, CardsStrings.getAdicionarContatosString());
+            CardsStrings.mostraCard(CardsStrings.getAdicionarContatosCard());
         });
         
         btnSair.addActionListener((ActionEvent e) -> 

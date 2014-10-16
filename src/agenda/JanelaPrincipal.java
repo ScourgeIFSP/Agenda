@@ -28,8 +28,8 @@ public class JanelaPrincipal extends JFrame
     private void adcComponentes()
     {
         // Definindo variáveis
-        painelPrincipal = new JPanel();
-        painelMenu = new PainelMenu(painelPrincipal);
+        painelPrincipal = CardsStrings.getPainelPrincipal();
+        painelMenu = new PainelMenu();
         painelLista = new PainelLista();
         painelAdicionar = new PainelAdicionar();
         
@@ -50,7 +50,7 @@ public class JanelaPrincipal extends JFrame
         janela.add(painelPrincipal, cons);
         
         // Adicionando cards
-        painelPrincipal.add(painelLista, CardsStrings.getListaString());
-        painelPrincipal.add(painelAdicionar, CardsStrings.getAdicionarContatosString());
+        painelPrincipal.add(painelLista, CardsStrings.getListaCard());
+        painelPrincipal.add(painelAdicionar, CardsStrings.getAdicionarContatosCard());
     }
 }

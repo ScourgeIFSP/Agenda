@@ -6,9 +6,9 @@ public class Agenda
 {
     public Agenda()
     {
-        
+
     }
-    
+
     public List<Contato> getContatos()
     {
         //int qtdContatos = 20; // qtdContatos = Quantidade de linhas resultantes de um select na tabela contatos
@@ -24,7 +24,7 @@ public class Agenda
         }
         */
         
-        List<Contato> contatos = new ArrayList();
+        List<Contato> contatos = new ArrayList<>();
         
         int i=0;
         while(/*Select na tabela contatos, while deverá passar por todas linhas*/i==1)

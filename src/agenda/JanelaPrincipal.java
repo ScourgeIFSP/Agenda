@@ -11,13 +11,13 @@ public class JanelaPrincipal extends JFrame
     private PainelMenu painelMenu;
     private PainelAdicionar painelAdicionar;
     private PainelLista painelLista;
-    
+
     // Contrutor
-    public JanelaPrincipal() 
+    public JanelaPrincipal()
     {
         super("Agenda");
         this.setMinimumSize(new Dimension(700, 500));
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         janela.setLayout(new GridBagLayout());
         
@@ -32,7 +32,7 @@ public class JanelaPrincipal extends JFrame
         painelMenu = new PainelMenu();
         painelLista = new PainelLista();
         painelAdicionar = new PainelAdicionar();
-        
+
         // Painel de menu
         GridBagConstraints cons = new GridBagConstraints();
         cons.insets = new Insets(5,5,5,0);

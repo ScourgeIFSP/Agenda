@@ -23,13 +23,13 @@ public class PainelListar extends JPanel
     private void adcComponentes()
     {
         // Definindo variáveis
-        tituloLabel = new TituloString("Contatos:", this);
+        tituloLabel = new TituloString("Contatos:");
         contatosPanel = new JPanel();
         contatosScroll = new JScrollPane(contatosPanel);
         GridBagConstraints cons = new GridBagConstraints();
                 
         // Título
-        tituloLabel.adicionar();
+        tituloLabel.adicionar(this);
         
         // Lista
         contatosPanel.setLayout(new GridBagLayout());

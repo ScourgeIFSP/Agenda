@@ -29,7 +29,7 @@ public class PainelAdicionar extends JPanel
     private void adcComponentes()
     {
         // Definindo variáveis
-        tituloLabel = new TituloString("Incluir Contato: ", this);
+        tituloLabel = new TituloString("Incluir Contato: ");
         txtnome = new JTextField();
         txttelefone = new JTextField();
         txtemail = new JTextField();
@@ -41,7 +41,7 @@ public class PainelAdicionar extends JPanel
         GridBagConstraints cons;
         
         // Título
-        tituloLabel.adicionar();
+        tituloLabel.adicionar(this);
         
         // Formulário
         adcCampo("Nome:", txtnome);

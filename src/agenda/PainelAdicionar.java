@@ -7,7 +7,6 @@ import javax.swing.*;
 public class PainelAdicionar extends JPanel
 {
     // Variáveis globais
-    private final JPanel painelPrincipal = CardsStrings.getPainelPrincipal();
     private TituloString tituloLabel;
     private JTextField txtnome;
     private JTextField txttelefone;
@@ -24,7 +23,6 @@ public class PainelAdicionar extends JPanel
        this.setLayout(new GridBagLayout()); 
        
        adcComponentes();
-       adcAcoes();
     }
     
     // Adiciona componentes no painel
@@ -46,13 +44,13 @@ public class PainelAdicionar extends JPanel
         tituloLabel.adicionar();
         
         // Formulário
-        adcCampo("Nome:", txtnome, this);
-        adcCampo("Telefone:", txttelefone, this);
-        adcCampo("E-mail:", txtemail, this);
-        adcCampo("Endereço:", txtendereco, this);
-        adcCampo("Cidade:", txtcidade, this);
+        adcCampo("Nome:", txtnome);
+        adcCampo("Telefone:", txttelefone);
+        adcCampo("E-mail:", txtemail);
+        adcCampo("Endereço:", txtendereco);
+        adcCampo("Cidade:", txtcidade);
         
-        // Botões
+        // Painel de botões
         cons = new GridBagConstraints();
         botoesPanel.setLayout(new GridBagLayout());
         cons.weightx = 1;
@@ -60,7 +58,7 @@ public class PainelAdicionar extends JPanel
         cons.fill = GridBagConstraints.BOTH;
         cons.gridwidth = GridBagConstraints.REMAINDER;
         this.add(botoesPanel, cons);
-        
+        // Botões
         cons = new GridBagConstraints();
         cons.weighty = 1;
         cons.anchor = GridBagConstraints.NORTH;
@@ -69,37 +67,31 @@ public class PainelAdicionar extends JPanel
         cancelarButton.setPreferredSize(new Dimension(100,30));
         botoesPanel.add(adicionarButton, cons);
         botoesPanel.add(cancelarButton, cons);
-        
+
+        // Adiciona ações aos botões
+        adicionarButton.addActionListener((ActionEvent e) ->
+        {
+
+        });
+
+        cancelarButton.addActionListener((ActionEvent e) ->
+                CardsStrings.mostrarPainel(CardsStrings.getListarContatosCard()));
     }
     
     // Adiciona um campo
-    private void adcCampo(String label, JComponent componente ,JPanel painel) 
+    private void adcCampo(String label, JComponent componente)
     {  
         GridBagConstraints cons = new GridBagConstraints();
         cons.anchor = GridBagConstraints.WEST;
         cons.insets = new Insets(4,20,4,4);
 
-        painel.add(new JLabel(label), cons);  
+        this.add(new JLabel(label), cons);
         
         cons.insets = new Insets(4,4,4,20);  
         cons.ipady = 4;
         cons.fill = GridBagConstraints.HORIZONTAL;  
         cons.weightx = 1;  
         cons.gridwidth = GridBagConstraints.REMAINDER;  
-        painel.add(componente, cons);  
-    }
-    
-    // Adiciona ações aos botões
-    private void adcAcoes()
-    {
-        adicionarButton.addActionListener((ActionEvent e) ->
-        {
-            
-        });
-        
-        cancelarButton.addActionListener((ActionEvent e) ->
-        {
-            CardsStrings.mostraCard(CardsStrings.getListaCard());
-        });
+        this.add(componente, cons);
     }
 }

@@ -10,15 +10,15 @@ public class JanelaPrincipal extends JFrame
     private JPanel painelPrincipal;
     private PainelMenu painelMenu;
     private PainelAdicionar painelAdicionar;
-    private PainelLista painelLista;
+    private PainelListar painelListar;
 
     // Contrutor
     public JanelaPrincipal()
     {
-        super("Agenda");
+        this.setTitle("Agenda");
         this.setMinimumSize(new Dimension(700, 500));
-        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         janela.setLayout(new GridBagLayout());
         
         adcComponentes();
@@ -30,7 +30,7 @@ public class JanelaPrincipal extends JFrame
         // Definindo variáveis
         painelPrincipal = CardsStrings.getPainelPrincipal();
         painelMenu = new PainelMenu();
-        painelLista = new PainelLista();
+        painelListar = new PainelListar();
         painelAdicionar = new PainelAdicionar();
 
         // Painel de menu
@@ -50,7 +50,7 @@ public class JanelaPrincipal extends JFrame
         janela.add(painelPrincipal, cons);
         
         // Adicionando cards
-        painelPrincipal.add(painelLista, CardsStrings.getListaCard());
+        painelPrincipal.add(painelListar, CardsStrings.getListarContatosCard());
         painelPrincipal.add(painelAdicionar, CardsStrings.getAdicionarContatosCard());
     }
 }

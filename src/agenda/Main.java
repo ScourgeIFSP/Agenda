@@ -9,6 +9,6 @@ public class Main
         ConexaoMySQL.conecta();
         JanelaPrincipal jp = new JanelaPrincipal();
         jp.setVisible(true);
-        ConexaoMySQL.encerra();
+        //ConexaoMySQL.encerra();
     }
 }

@@ -7,7 +7,6 @@ import javax.swing.*;
 public class PainelMenu extends JPanel 
 {
     // Variáveis globais
-    private final JPanel painelPrincipal = CardsStrings.getPainelPrincipal();
     private JButton btnContatos;
     private JButton btnAdicionarContatos;
     private JButton btnEditar;
@@ -20,7 +19,6 @@ public class PainelMenu extends JPanel
         this.setLayout(new GridBagLayout());
         
         adcComponentes();
-        adcAcoes();
     }
     
     // Adiciona componentes no painel
@@ -39,6 +37,16 @@ public class PainelMenu extends JPanel
         adcComponente(btnEditar, 2);
         adcComponente(btnExcluir, 3);
         adcComponente(btnSair, 4);
+
+        // Atribui ações aos botões
+        btnContatos.addActionListener((ActionEvent e) ->
+                CardsStrings.mostrarPainel(CardsStrings.getListarContatosCard()));
+
+        btnAdicionarContatos.addActionListener((ActionEvent e) ->
+                CardsStrings.mostrarPainel(CardsStrings.getAdicionarContatosCard()));
+
+        btnSair.addActionListener((ActionEvent e) ->
+                System.exit(0));
     }
     
     // Adiciona um componente
@@ -60,24 +68,5 @@ public class PainelMenu extends JPanel
         
         componente.setPreferredSize(dim);
         this.add(componente, cons);
-    }
-    
-    // Atribui ações aos botões
-    private void adcAcoes()
-    {
-        btnContatos.addActionListener((ActionEvent e) ->
-        {
-            CardsStrings.mostraCard(CardsStrings.getListaCard());
-        });
-        
-        btnAdicionarContatos.addActionListener((ActionEvent e) -> 
-        {
-            CardsStrings.mostraCard(CardsStrings.getAdicionarContatosCard());
-        });
-        
-        btnSair.addActionListener((ActionEvent e) -> 
-        {
-            System.exit(0);
-        });
     }
 }

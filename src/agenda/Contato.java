@@ -11,8 +11,14 @@ public class Contato
     
     public Contato(int id)
     {
-        // Select na tabela contato através do id, preenche os atributos da classe com o resultado
         this.id = id;
+        // Select na tabela contato através do id, preenche os atributos da classe com o resultado
+    }
+
+    public Contato(String nome)
+    {
+        this.id = 0;
+        this.nome = nome;
     }
     
     // Getters

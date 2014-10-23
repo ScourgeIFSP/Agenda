@@ -4,36 +4,22 @@ import java.util.*;
 
 public class Agenda
 {
-    public Agenda()
+    public static List<Contato> getContatos()
     {
+        int qtdContatos = 20; // Quantidade de linhas na tabela contato
 
-    }
+        List<Contato> contatos = new ArrayList<>(); // Lista de Contatos
 
-    public List<Contato> getContatos()
-    {
-        //int qtdContatos = 20; // qtdContatos = Quantidade de linhas resultantes de um select na tabela contatos
-        int idContato = 1;
-        
-        /*Contato[] contatos = new Contato[qtdContatos]; 
-        
+        // Adiciona contatos na lista
         int i=0;
-        while( Select na tabela contatos, while deverá passar por todas linhas )
+        while(i<qtdContatos)
         {
-            contatos[i] = new Contato(idContato);
-            i++;
-        }
-        */
-        
-        List<Contato> contatos = new ArrayList<>();
-        
-        int i=0;
-        while(/*Select na tabela contatos, while deverá passar por todas linhas*/i==1)
-        {
-            Contato contato = new Contato(idContato);
+            Contato contato = new Contato("Contato "+i);
             contatos.add(contato);
             i++;
         }
-        
+
+        // Retorna lista
         return contatos;
     }
 }

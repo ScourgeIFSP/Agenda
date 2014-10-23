@@ -7,10 +7,11 @@ public abstract class CardsStrings
 {
     // Strings referente aos cards do Painel Principal
     private static final JPanel painelPrincipal = new JPanel();
-    private static final String listaString = "contatos";
-    private static final String adicionarContatosString = "adicionar";
-    
-    public static void mostraCard(String card)
+    private static final String listarContatos = "listar";
+    private static final String adicionarContatos = "adicionar";
+
+    // Mostra painel desejado
+    public static void mostrarPainel(String card)
     {
         CardLayout cl = (CardLayout)(painelPrincipal.getLayout());
         cl.show(painelPrincipal, card);
@@ -22,13 +23,13 @@ public abstract class CardsStrings
         return painelPrincipal;
     }
     
-    public static String getListaCard()
+    public static String getListarContatosCard()
     {
-        return listaString;
+        return listarContatos;
     }
 
     public static String getAdicionarContatosCard()
     {
-        return adicionarContatosString;
+        return adicionarContatos;
     }
 }

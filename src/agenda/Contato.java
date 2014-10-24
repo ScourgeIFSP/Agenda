@@ -1,13 +1,14 @@
 package agenda;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class Contato
 {
     private final int id;
     private String nome;
-    private String telefone;
-    private String email;
+    private ArrayList<String> telefone;
+    private ArrayList<String> email;
     private String endereco;
     private String cidade;
     
@@ -40,12 +41,12 @@ public class Contato
         return nome;
     }
 
-    public String getTelefone() 
+    public ArrayList<String> getTelefone()
     {
         return telefone;
     }
     
-    public String getEmail()
+    public ArrayList<String> getEmail()
     {
         return email;
     }
@@ -66,12 +67,12 @@ public class Contato
         this.nome = nome;
     }
 
-    public void setTelefone(String telefone) 
+    public void setTelefone(ArrayList<String> telefone)
     {
         this.telefone = telefone;
     }
     
-    public void setEmail(String email)
+    public void setEmail(ArrayList<String> email)
     {
         this.email = email;
     }

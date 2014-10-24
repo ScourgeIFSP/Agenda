@@ -10,15 +10,6 @@ public class Agenda
     public static List<Contato> getContatos()
     {
         // Adiciona contatos na lista
-
-        /*int i=0;
-        while(i<20)
-        {
-            Contato contato = new Contato("Contato "+i);
-            contatos.add(contato);
-            i++;
-        }*/
-
         try
         {
             ResultSet linha = GerenciaContato.retornarTabelaContato();

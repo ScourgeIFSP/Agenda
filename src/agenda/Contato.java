@@ -1,6 +1,8 @@
 package agenda;
 
-public class Contato 
+import java.sql.*;
+
+public class Contato
 {
     private final int id;
     private String nome;
@@ -12,13 +14,19 @@ public class Contato
     public Contato(int id)
     {
         this.id = id;
+        try
+        {
+            ResultSet linha = GerenciaContato.retornarContato(this.id);
+            while (linha.next())
+            {
+                this.nome = linha.getString(2);
+            }
+        }
+        catch(SQLException sqle)
+        {
+            System.out.println(sqle.getMessage());
+        }
         // Select na tabela contato através do id, preenche os atributos da classe com o resultado
-    }
-
-    public Contato(String nome)
-    {
-        this.id = 0;
-        this.nome = nome;
     }
     
     // Getters

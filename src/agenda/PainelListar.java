@@ -10,6 +10,7 @@ public class PainelListar extends JPanel
     private TituloString tituloLabel = new TituloString("Contatos:");
     private JPanel contatosPanel = new JPanel();
     private JScrollPane contatosScroll = new JScrollPane(contatosPanel);
+    private java.util.List<Contato> contatos = Agenda.getContatos();
     
     // Contrutor
     public PainelListar()
@@ -35,7 +36,6 @@ public class PainelListar extends JPanel
         cons.insets = new Insets(5, 5, 5, 5);
         cons.ipady = 40;
         cons.fill = GridBagConstraints.HORIZONTAL;
-        java.util.List<Contato> contatos = Agenda.getContatos();
 
         // Contato da lista
         int size = contatos.size();
@@ -54,7 +54,7 @@ public class PainelListar extends JPanel
             int j = i;
             btn.addActionListener((ActionEvent e) ->
                     {
-                        PainelContato.setContato(contatos.get(j).getNome());
+                        PainelContato.setContato(contatos.get(j).getId());
                         JanelaPrincipal.mostrarPainel(CardsStrings.getContatoCard());
 
                     });

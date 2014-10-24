@@ -5,13 +5,14 @@ import java.sql.*;
 public class ConexaoMySQL
 {
     private static Connection connection = null;
+    private static Statement st;
     
     public ConexaoMySQL()
     {
         
     }
     
-    public static Connection conecta()
+    public static Connection conectar()
     {  
     	try 
     	{
@@ -36,7 +37,7 @@ public class ConexaoMySQL
         }
     }
     
-    public static boolean encerra()
+    public static boolean encerrar()
     {
     	try 
     	{

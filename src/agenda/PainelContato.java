@@ -57,7 +57,7 @@ public class PainelContato extends JPanel
         this.add(componente, cons);
     }
 
-    public static void setContato(String idContato)
+    public static void setContato(int idContato)
     {
         Contato contato = new Contato(idContato);
 

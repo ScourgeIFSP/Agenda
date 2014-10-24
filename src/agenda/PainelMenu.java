@@ -46,7 +46,7 @@ public class PainelMenu extends JPanel
     private void adcComponente(JComponent componente, int i) 
     {
         GridBagConstraints cons = new GridBagConstraints();
-        Dimension dim = new Dimension(0,50);
+        Dimension dim = new Dimension((int)componente.getPreferredSize().getWidth(),50);
         cons.insets = new Insets(5,5,5,5);
         cons.weightx = 1;
         cons.ipadx = 15;

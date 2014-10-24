@@ -1,5 +1,6 @@
 package agenda;
 
+import java.sql.*;
 import java.util.*;
 
 public class Agenda
@@ -8,15 +9,28 @@ public class Agenda
 
     public static List<Contato> getContatos()
     {
-        int qtdContatos = 20; // Quantidade de linhas na tabela contato
-
         // Adiciona contatos na lista
-        int i=0;
-        while(i<qtdContatos)
+
+        /*int i=0;
+        while(i<20)
         {
             Contato contato = new Contato("Contato "+i);
             contatos.add(contato);
             i++;
+        }*/
+
+        try
+        {
+            ResultSet linha = GerenciaContato.retornarTabelaContato();
+
+            while(linha.next())
+            {
+                contatos.add(new Contato(linha.getInt("ContatoId")));
+            }
+        }
+        catch(SQLException sqle)
+        {
+            System.out.println(sqle.getMessage());
         }
 
         // Retorna lista

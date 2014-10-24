@@ -7,15 +7,15 @@ import javax.swing.*;
 public class PainelAdicionar extends JPanel
 {
     // Variáveis globais
-    private TituloString tituloLabel;
-    private JTextField txtnome;
-    private JTextField txttelefone;
-    private JTextField txtemail;
-    private JTextField txtendereco;
-    private JTextField txtcidade;
-    private JPanel botoesPanel;
-    private JButton adicionarButton;
-    private JButton cancelarButton;
+    private TituloString tituloLabel = new TituloString("Incluir Contato: ");
+    private JTextField txtnome = new JTextField();
+    private JTextField txttelefone = new JTextField();
+    private JTextField txtemail = new JTextField();
+    private JTextField txtendereco = new JTextField();
+    private JTextField txtcidade = new JTextField();
+    private JPanel botoesPanel = new JPanel();
+    private JButton adicionarButton = new JButton("Adicionar");
+    private JButton cancelarButton = new JButton("Cancelar");
    
     // Contrutor
     public PainelAdicionar()
@@ -29,15 +29,6 @@ public class PainelAdicionar extends JPanel
     private void adcComponentes()
     {
         // Definindo variáveis
-        tituloLabel = new TituloString("Incluir Contato: ");
-        txtnome = new JTextField();
-        txttelefone = new JTextField();
-        txtemail = new JTextField();
-        txtendereco = new JTextField();
-        txtcidade = new JTextField();
-        botoesPanel = new JPanel();
-        adicionarButton = new JButton("Adicionar");
-        cancelarButton = new JButton("Cancelar");
         GridBagConstraints cons;
         
         // Título

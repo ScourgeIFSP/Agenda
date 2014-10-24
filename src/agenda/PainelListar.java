@@ -1,14 +1,15 @@
 package agenda;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import javax.swing.*;
 
 public class PainelListar extends JPanel
 {
     // Variáveis globais
-    private TituloString tituloLabel;
-    private JPanel contatosPanel;
-    private JScrollPane contatosScroll;
+    private TituloString tituloLabel = new TituloString("Contatos:");
+    private JPanel contatosPanel = new JPanel();
+    private JScrollPane contatosScroll = new JScrollPane(contatosPanel);
     
     // Contrutor
     public PainelListar()
@@ -22,22 +23,21 @@ public class PainelListar extends JPanel
     private void adcComponentes()
     {
         // Definindo variáveis
-        tituloLabel = new TituloString("Contatos:");
-        contatosPanel = new JPanel();
-        contatosScroll = new JScrollPane(contatosPanel);
-        GridBagConstraints cons = new GridBagConstraints();
+        GridBagConstraints cons;
                 
         // Título
         tituloLabel.adicionar(this);
         
         // Lista
         contatosPanel.setLayout(new GridBagLayout());
+        cons = new GridBagConstraints();
         cons.weightx = 1;
         cons.insets = new Insets(5, 5, 5, 5);
         cons.ipady = 40;
         cons.fill = GridBagConstraints.HORIZONTAL;
         java.util.List<Contato> contatos = Agenda.getContatos();
-             
+
+        // Contato da lista
         int size = contatos.size();
         for(int i=0;i<size;i++)
         {
@@ -50,6 +50,14 @@ public class PainelListar extends JPanel
                 cons.anchor = GridBagConstraints.NORTH;
             }
             contatosPanel.add(btn, cons);
+
+            int j = i;
+            btn.addActionListener((ActionEvent e) ->
+                    {
+                        PainelContato.setContato(contatos.get(j).getNome());
+                        JanelaPrincipal.mostrarPainel(CardsStrings.getContatoCard());
+
+                    });
         } 
         
         // Scrol Lista

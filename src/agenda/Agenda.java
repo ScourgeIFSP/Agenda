@@ -12,7 +12,7 @@ public class Agenda
         // Adiciona contatos na lista
         try
         {
-            ResultSet linha = GerenciaContato.retornarTabelaContato();
+            ResultSet linha = GerenciarContato.retornarContato();
 
             while(linha.next())
             {

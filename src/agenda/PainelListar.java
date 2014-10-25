@@ -7,7 +7,7 @@ import javax.swing.*;
 public class PainelListar extends JPanel
 {
     // Variáveis globais
-    private TituloString tituloLabel = new TituloString("Contatos:");
+    private TituloString tituloLabel = new TituloString("Contatos");
     private JPanel contatosPanel = new JPanel();
     private JScrollPane contatosScroll = new JScrollPane(contatosPanel);
     private java.util.List<Contato> contatos = Agenda.getContatos();

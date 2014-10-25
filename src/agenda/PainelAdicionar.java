@@ -7,7 +7,7 @@ import javax.swing.*;
 public class PainelAdicionar extends JPanel
 {
     // Variáveis globais
-    private TituloString tituloLabel = new TituloString("Incluir Contato: ");
+    private TituloString tituloLabel = new TituloString("Adicionar Contato");
     private JTextField txtnome = new JTextField();
     private JTextField txttelefone = new JTextField();
     private JTextField txtemail = new JTextField();

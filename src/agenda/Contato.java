@@ -17,7 +17,7 @@ public class Contato
         this.id = id;
         try
         {
-            ResultSet linha = GerenciaContato.retornarContato(this.id);
+            ResultSet linha = GerenciarContato.retornarContato(this.id);
             while (linha.next())
             {
                 this.nome = linha.getString(2);

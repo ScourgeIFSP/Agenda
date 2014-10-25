@@ -1,7 +1,5 @@
 package agenda;
 
-import conexao.ConexaoMySQL;
-
 public class Principal
 {
     public static void main(String args[])

@@ -2,15 +2,9 @@ package conexao;
 
 import java.sql.*;
 
-public class ConexaoMySQL
+public abstract class ConexaoMySQL
 {
     private static Connection connection = null;
-    private static Statement st;
-    
-    public ConexaoMySQL()
-    {
-        
-    }
     
     public static Connection conectar()
     {  
@@ -27,12 +21,12 @@ public class ConexaoMySQL
         } 
     	catch (SQLException sqle)
     	{
-            System.out.println("Não foi possivel conectar no banco."+ sqle);
+            System.out.println("Não foi possivel conectar no banco. Mensagem: "+sqle.getMessage());
             return null;
         }
         catch(ClassNotFoundException cnfe)
         {
-            System.out.println("Driver não encontrado."+ cnfe);
+            System.out.println("Driver não encontrado. "+cnfe.getMessage());
             return null;
         }
     }
@@ -47,6 +41,7 @@ public class ConexaoMySQL
         } 
     	catch (SQLException sqle) 
     	{
+            System.out.println("Conexão não pode ser encerrada: "+sqle.getMessage());
             return false;
         }
     }

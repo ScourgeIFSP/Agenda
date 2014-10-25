@@ -1,20 +1,22 @@
 package conexao;
 
 import java.sql.*;
+import java.util.*;
 
-public abstract class ConexaoMySQL
+public class ConexaoMySQL implements Conexao
 {
     private static Connection connection = null;
-    
-    public static Connection conectar()
+
+    // Inicia conexão
+    public Connection conectar()
     {  
     	try 
     	{
             // Configurações na conexão MySQL
-            String url = "jdbc:mysql://localhost/agenda";
+            String url = "jdbc:mysql://"+Acesso.getServidor()+"/"+Acesso.getBanco();
             String driverName = "com.mysql.jdbc.Driver";
             Class.forName(driverName);
-            connection = DriverManager.getConnection(url,"root","" );
+            connection = DriverManager.getConnection(url,Acesso.getUsuario(),Acesso.getSenha());
 
             System.out.println("Conectado com Sucesso!");
             return connection;
@@ -30,19 +32,46 @@ public abstract class ConexaoMySQL
             return null;
         }
     }
-    
-    public static boolean encerrar()
+
+    // Encerra conexão
+    public boolean encerrar()
     {
-    	try 
+    	try
     	{
             connection.close();
             System.out.println("Conexão Encerrada.");
             return true;
-        } 
-    	catch (SQLException sqle) 
+        }
+    	catch (SQLException sqle)
     	{
             System.out.println("Conexão não pode ser encerrada: "+sqle.getMessage());
             return false;
         }
+    }
+
+    // Métodos de acesso ao banco
+    public String seleciona(String tabela)
+    {
+        return "SELECT * FROM "+tabela;
+    }
+
+    public String seleciona(String tabela, String condicao, String valor)
+    {
+        return "SELECT * FROM "+tabela+" WHERE "+condicao+" = '"+valor+"'";
+    }
+
+    public String insere(String tabela, ArrayList<String> valores)
+    {
+        return "";
+    }
+
+    public String altera()
+    {
+        return "";
+    }
+
+    public String deleta()
+    {
+        return "";
     }
 }

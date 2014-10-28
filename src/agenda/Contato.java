@@ -17,10 +17,13 @@ public class Contato
         this.id = id;
         try
         {
-            ResultSet linha = GerenciarContato.retornarContato(this.id);
-            while (linha.next())
+            ResultSet linhaContato = GerenciarContato.retornarContato(this.id);
+            ResultSet linhaTelefone = GerenciarContato.retornarTelefonesContato(this.id);
+            while (linhaContato.next())
             {
-                this.nome = linha.getString(2);
+                this.nome = linhaContato.getString("ContatoNome");
+                this.endereco = linhaContato.getString("ContatoEndereco");
+                this.cidade = linhaContato.getString("ContatoCidade");
             }
         }
         catch(SQLException sqle)
@@ -35,27 +38,22 @@ public class Contato
     {
         return id;
     }
-
     public String getNome() 
     {
         return nome;
     }
-
     public ArrayList<String> getTelefone()
     {
         return telefone;
     }
-    
     public ArrayList<String> getEmail()
     {
         return email;
     }
-
     public String getEndereco() 
     {
         return endereco;
     }
-
     public String getCidade() 
     {
         return cidade;
@@ -66,22 +64,18 @@ public class Contato
     {
         this.nome = nome;
     }
-
     public void setTelefone(ArrayList<String> telefone)
     {
         this.telefone = telefone;
     }
-    
     public void setEmail(ArrayList<String> email)
     {
         this.email = email;
     }
-
     public void setEndereco(String endereco) 
     {
         this.endereco = endereco;
     }
-
     public void setCidade(String cidade) 
     {
         this.cidade = cidade;

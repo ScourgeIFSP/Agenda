@@ -12,7 +12,7 @@ public class ConexaoMySQL implements Conexao
     {  
     	try 
     	{
-            // Configurações na conexão MySQL
+            // Configurações de conexão MySQL
             String url = "jdbc:mysql://"+Acesso.getServidor()+"/"+Acesso.getBanco();
             String driverName = "com.mysql.jdbc.Driver";
             Class.forName(driverName);

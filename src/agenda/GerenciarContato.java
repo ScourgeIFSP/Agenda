@@ -22,4 +22,11 @@ public abstract class GerenciarContato
 
         return GerenciarConexao.executarQuery(query);
     }
+
+    public static ResultSet retornarTelefonesContato(int id)
+    {
+        String query = conexao.seleciona("telefone","Contato_ContatoId",String.valueOf(id));
+
+        return GerenciarConexao.executarQuery(query);
+    }
 }

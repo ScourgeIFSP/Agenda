@@ -33,6 +33,8 @@ public class PainelContato extends JPanel
 
         // Campos
         adcCampo("Nome:", nomeTField);
+        adcCampo("Endereço:", endereçoTField);
+        adcCampo("Cidade:", cidadeTField);
 
         // Painel de ajuste
         cons = new GridBagConstraints();
@@ -63,7 +65,8 @@ public class PainelContato extends JPanel
 
         tituloLabel.setText(contato.getNome());
         nomeTField.setText(contato.getNome());
-
+        endereçoTField.setText(contato.getEndereco());
+        cidadeTField.setText(contato.getCidade());
     }
 
 }

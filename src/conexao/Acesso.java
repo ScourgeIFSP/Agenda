@@ -11,17 +11,14 @@ public abstract class Acesso
     {
         return servidor;
     }
-
     public static String getBanco()
     {
         return banco;
     }
-
     public static String getUsuario()
     {
         return usuario;
     }
-
     public static String getSenha()
     {
         return senha;

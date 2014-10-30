@@ -7,11 +7,11 @@ public class JanelaPrincipal extends JFrame
 {
     // Variáveis globais
     private final Container janela = this.getContentPane();
-    private static JPanel painelPrincipal = new JPanel();
-    private static PainelMenu painelMenu = new PainelMenu();
-    private static PainelListar painelListar = new PainelListar();
-    private static PainelContato painelContato = new PainelContato();
-    private static PainelAdicionar painelAdicionar = new PainelAdicionar();
+    private static final JPanel painelPrincipal = new JPanel();
+    private PainelMenu painelMenu = new PainelMenu();
+    private PainelListar painelListar = new PainelListar();
+    private PainelContato painelContato = new PainelContato();
+    private PainelAdicionar painelAdicionar = new PainelAdicionar();
 
     // Contrutor
     public JanelaPrincipal()

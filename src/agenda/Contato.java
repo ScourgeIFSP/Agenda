@@ -1,5 +1,7 @@
 package agenda;
 
+import conexao.GerenciarConexao;
+
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -15,22 +17,24 @@ public class Contato
     public Contato(int id)
     {
         this.id = id;
-        try
+        if(GerenciarConexao.getConexao()!=null)
         {
-            ResultSet linhaContato = GerenciarContato.retornarContato(this.id);
-            ResultSet linhaTelefone = GerenciarContato.retornarTelefonesContato(this.id);
-            while (linhaContato.next())
-            {
-                this.nome = linhaContato.getString("ContatoNome");
-                this.endereco = linhaContato.getString("ContatoEndereco");
-                this.cidade = linhaContato.getString("ContatoCidade");
+            try {
+                ResultSet linhaContato = GerenciarContato.retornarContato(this.id);
+                ResultSet linhaTelefone = GerenciarContato.retornarTelefonesContato(this.id);
+                while (linhaContato.next()) {
+                    this.nome = linhaContato.getString("ContatoNome");
+                    this.endereco = linhaContato.getString("ContatoEndereco");
+                    this.cidade = linhaContato.getString("ContatoCidade");
+                }
+            } catch (SQLException sqle) {
+                System.out.println(sqle.getMessage());
             }
         }
-        catch(SQLException sqle)
+        else
         {
-            System.out.println(sqle.getMessage());
+            this.nome = "Sem conexao!";
         }
-        // Select na tabela contato através do id, preenche os atributos da classe com o resultado
     }
     
     // Getters

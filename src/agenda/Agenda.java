@@ -1,5 +1,7 @@
 package agenda;
 
+import conexao.GerenciarConexao;
+
 import java.sql.*;
 import java.util.*;
 
@@ -10,18 +12,21 @@ public class Agenda
     public static List<Contato> getContatos()
     {
         // Adiciona contatos na lista
-        try
+        if(GerenciarConexao.getConexao()!=null)
         {
-            ResultSet linha = GerenciarContato.retornarContato();
+            try {
+                ResultSet linha = GerenciarContato.retornarContato();
 
-            while(linha.next())
-            {
-                contatos.add(new Contato(linha.getInt("ContatoId")));
+                while (linha.next()) {
+                    contatos.add(new Contato(linha.getInt("ContatoId")));
+                }
+            } catch (SQLException sqle) {
+                System.out.println(sqle.getMessage());
             }
         }
-        catch(SQLException sqle)
+        else
         {
-            System.out.println(sqle.getMessage());
+            contatos.add(new Contato(0));
         }
 
         // Retorna lista

@@ -13,6 +13,11 @@ public class JanelaPrincipal extends JFrame
     private PainelContato painelContato = new PainelContato();
     private PainelAdicionar painelAdicionar = new PainelAdicionar();
 
+    // Strings referente aos cards do Painel Principal
+    public static final String listarContatos = "listar";
+    public static final String contato = "contato";
+    public static final String adicionarContatos = "adicionar";
+
     // Contrutor
     public JanelaPrincipal()
     {
@@ -48,9 +53,9 @@ public class JanelaPrincipal extends JFrame
         janela.add(painelPrincipal, cons);
         
         // Adicionando cards
-        painelPrincipal.add(painelListar, CardsStrings.getListarContatosCard());
-        painelPrincipal.add(painelAdicionar, CardsStrings.getAdicionarContatosCard());
-        painelPrincipal.add(painelContato, CardsStrings.getContatoCard());
+        painelPrincipal.add(painelListar, listarContatos);
+        painelPrincipal.add(painelAdicionar, adicionarContatos);
+        painelPrincipal.add(painelContato, contato);
     }
 
     // Mostra painel desejado

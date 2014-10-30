@@ -7,9 +7,10 @@ import java.util.*;
 
 public class Agenda
 {
-    private static List<Contato> contatos = new ArrayList<>(); // Lista de Contatos
+    // Lista de Contatos
+    private ArrayList<Contato> contatos = new ArrayList<>();
 
-    public static List<Contato> getContatos()
+    public ArrayList<Contato> getContatos()
     {
         // Adiciona contatos na lista
         if(GerenciarConexao.getConexao()!=null)

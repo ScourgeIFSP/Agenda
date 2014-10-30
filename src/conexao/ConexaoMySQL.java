@@ -62,7 +62,24 @@ public class ConexaoMySQL implements Conexao
 
     public String insere(String tabela, ArrayList<String> valores)
     {
-        return "";
+        String query = "insert into "+tabela+" values(";
+
+        for(String valor : valores)
+        {
+            query += valor;
+            if(valores.get(valores.size()-1) != valor)
+            {
+                query += ",";
+            }
+            else
+            {
+                query += ");";
+            }
+        }
+
+        System.out.println(query);
+
+        return query;
     }
 
     public String altera()

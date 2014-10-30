@@ -33,10 +33,10 @@ public class PainelMenu extends JPanel
 
         // Atribui ações aos botões
         btnContatos.addActionListener((ActionEvent e) ->
-                JanelaPrincipal.mostrarPainel(CardsStrings.getListarContatosCard()));
+                JanelaPrincipal.mostrarPainel(JanelaPrincipal.listarContatos));
 
         btnAdicionarContatos.addActionListener((ActionEvent e) ->
-                JanelaPrincipal.mostrarPainel(CardsStrings.getAdicionarContatosCard()));
+                JanelaPrincipal.mostrarPainel(JanelaPrincipal.adicionarContatos));
 
         btnSair.addActionListener((ActionEvent e) ->
                 System.exit(0));

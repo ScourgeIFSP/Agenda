@@ -1,7 +1,8 @@
 package agenda;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
+import java.awt.event.*;
+import java.util.*;
 import javax.swing.*;
 
 public class PainelListar extends JPanel
@@ -10,7 +11,6 @@ public class PainelListar extends JPanel
     private TituloString tituloLabel = new TituloString("Contatos");
     private JPanel contatosPanel = new JPanel();
     private JScrollPane contatosScroll = new JScrollPane(contatosPanel);
-    private java.util.List<Contato> contatos = Agenda.getContatos();
     
     // Contrutor
     public PainelListar()
@@ -36,8 +36,10 @@ public class PainelListar extends JPanel
         cons.insets = new Insets(5, 5, 5, 5);
         cons.ipady = 40;
         cons.fill = GridBagConstraints.HORIZONTAL;
+        Agenda agenda = new Agenda();
 
         // Contato da lista
+        ArrayList<Contato> contatos = agenda.getContatos();
         int size = contatos.size();
         for(int i=0;i<size;i++)
         {
@@ -55,7 +57,7 @@ public class PainelListar extends JPanel
             btn.addActionListener((ActionEvent e) ->
                     {
                         PainelContato.setContato(contatos.get(j).getId());
-                        JanelaPrincipal.mostrarPainel(CardsStrings.getContatoCard());
+                        JanelaPrincipal.mostrarPainel(JanelaPrincipal.contato);
 
                     });
         } 

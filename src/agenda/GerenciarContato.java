@@ -3,6 +3,7 @@ package agenda;
 import conexao.*;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public abstract class GerenciarContato
 {
@@ -26,6 +27,16 @@ public abstract class GerenciarContato
     public static ResultSet retornarTelefonesContato(int id)
     {
         String query = conexao.seleciona("telefone","Contato_ContatoId",String.valueOf(id));
+
+        return GerenciarConexao.executarQuery(query);
+    }
+
+    public static ResultSet inserirContato()
+    {
+        ArrayList<String> infoContato = new ArrayList<String>();
+        infoContato.add(null);
+        infoContato.add("");
+        String query = conexao.insere("contato", infoContato);
 
         return GerenciarConexao.executarQuery(query);
     }

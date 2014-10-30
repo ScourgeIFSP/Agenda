@@ -66,7 +66,7 @@ public class PainelAdicionar extends JPanel
         });
 
         cancelarButton.addActionListener((ActionEvent e) ->
-                JanelaPrincipal.mostrarPainel(CardsStrings.getListarContatosCard()));
+                JanelaPrincipal.mostrarPainel(JanelaPrincipal.listarContatos));
     }
     
     // Adiciona um campo

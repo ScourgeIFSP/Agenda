@@ -16,7 +16,7 @@ public class Agenda
         if(GerenciarConexao.getConexao()!=null)
         {
             try {
-                ResultSet linha = GerenciarContato.retornarContato();
+                ResultSet linha = GerenciarContato.retornarTabelaContato();
 
                 while (linha.next()) {
                     contatos.add(new Contato(linha.getInt("ContatoId")));

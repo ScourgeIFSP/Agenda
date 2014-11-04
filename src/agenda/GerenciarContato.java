@@ -3,14 +3,14 @@ package agenda;
 import conexao.*;
 
 import java.sql.*;
-import java.util.ArrayList;
+import java.util.*;
 
 public abstract class GerenciarContato
 {
     private static Conexao conexao = GerenciarConexao.getConexao();
 
     // Métodos
-    public static ResultSet retornarContato()
+    public static ResultSet retornarTabelaContato()
     {
         String query = conexao.seleciona("contato");
 

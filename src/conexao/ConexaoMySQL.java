@@ -60,6 +60,11 @@ public class ConexaoMySQL implements Conexao
         return "SELECT * FROM "+tabela+" WHERE "+condicao+" = '"+valor+"'";
     }
 
+    public String seleciona(String tabela, ArrayList<String> condicoes, ArrayList<String> valores)
+    {
+        return "SELECT * FROM "+tabela+" WHERE "+condicoes+" = '"+valores+"'";
+    }
+
     public String insere(String tabela, ArrayList<String> valores)
     {
         String query = "insert into "+tabela+" values(";

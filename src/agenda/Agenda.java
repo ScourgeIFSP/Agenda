@@ -1,6 +1,6 @@
 package agenda;
 
-import conexao.GerenciarConexao;
+import conexao.*;
 
 import java.sql.*;
 import java.util.*;
@@ -12,16 +12,20 @@ public class Agenda
 
     public ArrayList<Contato> getContatos()
     {
-        // Adiciona contatos na lista
+        // Adiciona Contatos na lista
         if(GerenciarConexao.getConexao()!=null)
         {
-            try {
+            try
+            {
                 ResultSet linha = GerenciarContato.retornarTabelaContato();
 
-                while (linha.next()) {
+                while (linha.next())
+                {
                     contatos.add(new Contato(linha.getInt("ContatoId")));
                 }
-            } catch (SQLException sqle) {
+            }
+            catch (SQLException sqle)
+            {
                 System.out.println(sqle.getMessage());
             }
         }

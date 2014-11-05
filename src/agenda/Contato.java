@@ -1,19 +1,21 @@
 package agenda;
 
-import conexao.GerenciarConexao;
+import conexao.*;
 
 import java.sql.*;
-import java.util.ArrayList;
+import java.util.*;
 
 public class Contato
 {
+    // Atributos do Contato
     private final int id;
     private String nome;
     private ArrayList<String> telefone;
     private ArrayList<String> email;
     private String endereco;
     private String cidade;
-    
+
+    // Construtor
     public Contato(int id)
     {
         this.id = id;
@@ -21,7 +23,6 @@ public class Contato
         {
             try {
                 ResultSet linhaContato = GerenciarContato.retornarContato(this.id);
-                ResultSet linhaTelefone = GerenciarContato.retornarTelefonesContato(this.id);
                 while (linhaContato.next()) {
                     this.nome = linhaContato.getString("ContatoNome");
                     this.endereco = linhaContato.getString("ContatoEndereco");

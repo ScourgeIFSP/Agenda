@@ -49,40 +49,56 @@ public class ConexaoMySQL implements Conexao
         }
     }
 
-    // Métodos de acesso ao banco
+    // Seleciona todos os dados de uma tabela
     public String seleciona(String tabela)
     {
-        return "SELECT * FROM "+tabela;
+        return "SELECT * FROM "+tabela+";";
     }
 
+    // Seleciona uma tabela com apenas uma condição
     public String seleciona(String tabela, String condicao, String valor)
     {
-        return "SELECT * FROM "+tabela+" WHERE "+condicao+" = '"+valor+"'";
+        return "SELECT * FROM "+tabela+" WHERE "+condicao+" = '"+valor+"';";
     }
 
+    // Seleciona uma tabela com inumeras condições
     public String seleciona(String tabela, ArrayList<String> condicoes, ArrayList<String> valores)
     {
-        return "SELECT * FROM "+tabela+" WHERE "+condicoes+" = '"+valores+"'";
+        String query = "SELECT * FROM "+tabela+" WHERE ";
+
+        for (int i=0; i<condicoes.size(); i++)
+        {
+            if (i!=0)
+            {
+                query += " AND ";
+            }
+            query += condicoes.get(i)+" = "+valores.get(i);
+            if (i == condicoes.size()-1)
+            {
+                query += ";";
+            }
+        }
+
+        return query;
     }
 
+    // Insere em uma tabela com os valores em ordem
     public String insere(String tabela, ArrayList<String> valores)
     {
-        String query = "insert into "+tabela+" values(";
+        String query = "INSERT INTO "+tabela+" VALUES (";
 
         for(String valor : valores)
         {
             query += valor;
             if(valores.get(valores.size()-1) != valor)
             {
-                query += ",";
+                query += ", ";
             }
             else
             {
                 query += ");";
             }
         }
-
-        System.out.println(query);
 
         return query;
     }

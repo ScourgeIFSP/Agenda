@@ -7,9 +7,10 @@ import java.util.*;
 
 public abstract class GerenciarContato
 {
+    // Conexao atual
     private static Conexao conexao = GerenciarConexao.getConexao();
 
-    // Métodos
+    // Retora a tabela Contato
     public static ResultSet retornarTabelaContato()
     {
         String query = conexao.seleciona("contato");
@@ -17,6 +18,7 @@ public abstract class GerenciarContato
         return GerenciarConexao.executarQuery(query);
     }
 
+    // Retorna um único Contato através do Id
     public static ResultSet retornarContato(int id)
     {
         String query = conexao.seleciona("contato","ContatoId",String.valueOf(id));
@@ -24,6 +26,7 @@ public abstract class GerenciarContato
         return GerenciarConexao.executarQuery(query);
     }
 
+    // Retorna os telefones do contato através do Id
     public static ResultSet retornarTelefonesContato(int id)
     {
         String query = conexao.seleciona("telefone","Contato_ContatoId",String.valueOf(id));
@@ -31,6 +34,7 @@ public abstract class GerenciarContato
         return GerenciarConexao.executarQuery(query);
     }
 
+    // Insere um contato
     public static ResultSet inserirContato()
     {
         ArrayList<String> infoContato = new ArrayList<String>();

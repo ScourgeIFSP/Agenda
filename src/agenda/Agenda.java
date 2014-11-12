@@ -17,7 +17,7 @@ public class Agenda
         {
             try
             {
-                ResultSet linha = GerenciarContato.retornarTabelaContato();
+                ResultSet linha = GerenciarContato.retornarContatos();
 
                 while (linha.next())
                 {

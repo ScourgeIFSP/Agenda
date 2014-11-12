@@ -11,7 +11,7 @@ public abstract class GerenciarContato
     private static Conexao conexao = GerenciarConexao.getConexao();
 
     // Retora a tabela Contato
-    public static ResultSet retornarTabelaContato()
+    public static ResultSet retornarContatos()
     {
         String query = conexao.seleciona("contato");
 
@@ -35,11 +35,8 @@ public abstract class GerenciarContato
     }
 
     // Insere um contato
-    public static ResultSet inserirContato()
+    public static ResultSet inserirContato(ArrayList<String> infoContato)
     {
-        ArrayList<String> infoContato = new ArrayList<String>();
-        infoContato.add(null);
-        infoContato.add("");
         String query = conexao.insere("contato", infoContato);
 
         return GerenciarConexao.executarQuery(query);

@@ -10,8 +10,8 @@ public class Contato
     // Atributos do Contato
     private final int id;
     private String nome;
-    private ArrayList<String> telefone;
-    private ArrayList<String> email;
+    private ArrayList<String> telefones;
+    private ArrayList<String> emails;
     private String endereco;
     private String cidade;
 
@@ -47,13 +47,13 @@ public class Contato
     {
         return nome;
     }
-    public ArrayList<String> getTelefone()
+    public ArrayList<String> getTelefones()
     {
-        return telefone;
+        return telefones;
     }
-    public ArrayList<String> getEmail()
+    public ArrayList<String> getEmails()
     {
-        return email;
+        return emails;
     }
     public String getEndereco() 
     {
@@ -69,13 +69,13 @@ public class Contato
     {
         this.nome = nome;
     }
-    public void setTelefone(ArrayList<String> telefone)
+    public void setTelefones(ArrayList<String> telefones)
     {
-        this.telefone = telefone;
+        this.telefones = telefones;
     }
-    public void setEmail(ArrayList<String> email)
+    public void setEmails(ArrayList<String> emails)
     {
-        this.email = email;
+        this.emails = emails;
     }
     public void setEndereco(String endereco) 
     {

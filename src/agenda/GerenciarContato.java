@@ -34,11 +34,39 @@ public abstract class GerenciarContato
         return GerenciarConexao.executarQuery(query);
     }
 
+    // Retorna os e-mails do contato através do Id
+    public static ResultSet retornarEmailsContato(int id)
+    {
+        // Fazer
+        return null;
+    }
+
     // Insere um contato
     public static ResultSet inserirContato(ArrayList<String> infoContato)
     {
         String query = conexao.insere("contato", infoContato);
 
         return GerenciarConexao.executarQuery(query);
+    }
+
+    // Insere um contato
+    public static ResultSet pesquisarContato(String nome)
+    {
+        // Fazer
+        return null;
+    }
+
+    // Insere um contato
+    public static ResultSet editarContato(int id, ArrayList<String> modificacoes)
+    {
+        // Fazer
+        return null;
+    }
+
+    // Insere um contato
+    public static ResultSet deletarContato(int id)
+    {
+        // Fazer
+        return null;
     }
 }

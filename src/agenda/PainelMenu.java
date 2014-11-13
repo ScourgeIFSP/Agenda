@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class PainelMenu extends JPanel 
+public class PainelMenu extends JPanel
 {
     // Variáveis globais
     private JButton btnContatos = new JButton("<html><center>Listar<br>Contatos</center></html>");
@@ -33,7 +33,10 @@ public class PainelMenu extends JPanel
 
         // Atribui ações aos botões
         btnContatos.addActionListener((ActionEvent e) ->
-                JanelaPrincipal.mostrarPainel(JanelaPrincipal.listarContatos));
+                {
+                    JanelaPrincipal.painelListar.atualizarPainel();
+                    JanelaPrincipal.mostrarPainel(JanelaPrincipal.listarContatos);
+                });
 
         btnAdicionarContatos.addActionListener((ActionEvent e) ->
                 JanelaPrincipal.mostrarPainel(JanelaPrincipal.adicionarContatos));

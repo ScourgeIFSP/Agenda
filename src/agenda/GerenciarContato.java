@@ -19,7 +19,7 @@ public abstract class GerenciarContato
         {
             try
             {
-                ResultSet linha = conexao.seleciona("contato");
+                ResultSet linha = conexao.selecionar("contato");
 
                 while (linha.next())
                 {
@@ -42,8 +42,6 @@ public abstract class GerenciarContato
     // Retorna um único Contato através do Id
     public static Contato retornarContato(int id)
     {
-        //String query = conexao.seleciona("contato","ContatoId",String.valueOf(id));
-
         Contato contato;
         String nome = null;
         ArrayList<String> telefones = null;
@@ -51,11 +49,11 @@ public abstract class GerenciarContato
         String endereco = null;
         String cidade = null;
 
-        if(GerenciarConexao.getConexao()!=null)
+        if(conexao!=null)
         {
             try
             {
-                ResultSet linhaContato = conexao.seleciona("contato","ContatoId",String.valueOf(id));
+                ResultSet linhaContato = conexao.selecionar("contato", "ContatoId", String.valueOf(id));
                 while (linhaContato.next())
                 {
                     nome = linhaContato.getString("ContatoNome");
@@ -95,7 +93,8 @@ public abstract class GerenciarContato
     // Insere um contato
     public static void inserirContato(ArrayList<String> infoContato)
     {
-        conexao.insere("contato", infoContato);
+        // ToDo
+        conexao.inserir("contato", infoContato);
     }
 
     // Pesquisa um contato

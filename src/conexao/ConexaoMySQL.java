@@ -50,7 +50,7 @@ public class ConexaoMySQL implements Conexao
     }
 
     // Seleciona todos os dados de uma tabela
-    public ResultSet seleciona(String tabela)
+    public ResultSet selecionar(String tabela)
     {
         String query = "SELECT * FROM "+tabela+";";
 
@@ -58,7 +58,7 @@ public class ConexaoMySQL implements Conexao
     }
 
     // Seleciona uma tabela com apenas uma condição
-    public ResultSet seleciona(String tabela, String condicao, String valor)
+    public ResultSet selecionar(String tabela, String condicao, String valor)
     {
         String query = "SELECT * FROM "+tabela+" WHERE "+condicao+" = '"+valor+"';";
 
@@ -66,7 +66,7 @@ public class ConexaoMySQL implements Conexao
     }
 
     // Seleciona uma tabela com inumeras condições
-    public ResultSet seleciona(String tabela, ArrayList<String> condicoes, ArrayList<String> valores)
+    public ResultSet selecionar(String tabela, ArrayList<String> condicoes, ArrayList<String> valores)
     {
         String query = "SELECT * FROM "+tabela+" WHERE ";
 
@@ -87,7 +87,7 @@ public class ConexaoMySQL implements Conexao
     }
 
     // Insere em uma tabela com os valores em ordem
-    public ResultSet insere(String tabela, ArrayList<String> valores)
+    public ResultSet inserir(String tabela, ArrayList<String> valores)
     {
         String query = "INSERT INTO "+tabela+" VALUES (";
 
@@ -107,12 +107,12 @@ public class ConexaoMySQL implements Conexao
         return GerenciarConexao.executarQuery(query);
     }
 
-    public ResultSet altera()
+    public ResultSet alterar()
     {
         return null;
     }
 
-    public ResultSet deleta()
+    public ResultSet deletar()
     {
         return null;
     }

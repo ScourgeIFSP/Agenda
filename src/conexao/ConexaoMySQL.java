@@ -5,7 +5,7 @@ import java.util.*;
 
 public class ConexaoMySQL implements Conexao
 {
-    private static Connection connection = null;
+    private static Connection con = null;
 
     // Inicia conexão
     public Connection conectar()
@@ -16,10 +16,10 @@ public class ConexaoMySQL implements Conexao
             String url = "jdbc:mysql://"+Acesso.getServidor()+"/"+Acesso.getBanco();
             String driverName = "com.mysql.jdbc.Driver";
             Class.forName(driverName);
-            connection = DriverManager.getConnection(url,Acesso.getUsuario(),Acesso.getSenha());
+            con = DriverManager.getConnection(url,Acesso.getUsuario(),Acesso.getSenha());
 
             System.out.println("Conectado com Sucesso!");
-            return connection;
+            return con;
         } 
     	catch (SQLException sqle)
     	{
@@ -38,7 +38,7 @@ public class ConexaoMySQL implements Conexao
     {
     	try
     	{
-            connection.close();
+            con.close();
             System.out.println("Conexão Encerrada.");
             return true;
         }
@@ -50,19 +50,23 @@ public class ConexaoMySQL implements Conexao
     }
 
     // Seleciona todos os dados de uma tabela
-    public String seleciona(String tabela)
+    public ResultSet seleciona(String tabela)
     {
-        return "SELECT * FROM "+tabela+";";
+        String query = "SELECT * FROM "+tabela+";";
+
+        return  GerenciarConexao.executarQuery(query);
     }
 
     // Seleciona uma tabela com apenas uma condição
-    public String seleciona(String tabela, String condicao, String valor)
+    public ResultSet seleciona(String tabela, String condicao, String valor)
     {
-        return "SELECT * FROM "+tabela+" WHERE "+condicao+" = '"+valor+"';";
+        String query = "SELECT * FROM "+tabela+" WHERE "+condicao+" = '"+valor+"';";
+
+        return GerenciarConexao.executarQuery(query);
     }
 
     // Seleciona uma tabela com inumeras condições
-    public String seleciona(String tabela, ArrayList<String> condicoes, ArrayList<String> valores)
+    public ResultSet seleciona(String tabela, ArrayList<String> condicoes, ArrayList<String> valores)
     {
         String query = "SELECT * FROM "+tabela+" WHERE ";
 
@@ -79,11 +83,11 @@ public class ConexaoMySQL implements Conexao
             }
         }
 
-        return query;
+        return GerenciarConexao.executarQuery(query);
     }
 
     // Insere em uma tabela com os valores em ordem
-    public String insere(String tabela, ArrayList<String> valores)
+    public ResultSet insere(String tabela, ArrayList<String> valores)
     {
         String query = "INSERT INTO "+tabela+" VALUES (";
 
@@ -100,16 +104,16 @@ public class ConexaoMySQL implements Conexao
             }
         }
 
-        return query;
+        return GerenciarConexao.executarQuery(query);
     }
 
-    public String altera()
+    public ResultSet altera()
     {
-        return "";
+        return null;
     }
 
-    public String deleta()
+    public ResultSet deleta()
     {
-        return "";
+        return null;
     }
 }

@@ -11,62 +11,111 @@ public abstract class GerenciarContato
     private static Conexao conexao = GerenciarConexao.getConexao();
 
     // Retora a tabela Contato
-    public static ResultSet retornarContatos()
+    public static ArrayList<Contato> retornarContatos()
     {
-        String query = conexao.seleciona("contato");
+        ArrayList<Contato> contatos = new ArrayList<>();
 
-        return GerenciarConexao.executarQuery(query);
+        if(conexao!=null)
+        {
+            try
+            {
+                ResultSet linha = conexao.seleciona("contato");
+
+                while (linha.next())
+                {
+                    contatos.add(retornarContato(linha.getInt("ContatoId")));
+                }
+            }
+            catch (SQLException sqle)
+            {
+                System.out.println(sqle.getMessage());
+            }
+        }
+        else
+        {
+            contatos.add(retornarContato(0));
+        }
+
+        return contatos;
     }
 
     // Retorna um único Contato através do Id
-    public static ResultSet retornarContato(int id)
+    public static Contato retornarContato(int id)
     {
-        String query = conexao.seleciona("contato","ContatoId",String.valueOf(id));
+        //String query = conexao.seleciona("contato","ContatoId",String.valueOf(id));
 
-        return GerenciarConexao.executarQuery(query);
+        Contato contato;
+        String nome = null;
+        ArrayList<String> telefones = null;
+        ArrayList<String> emails = null;
+        String endereco = null;
+        String cidade = null;
+
+        if(GerenciarConexao.getConexao()!=null)
+        {
+            try
+            {
+                ResultSet linhaContato = conexao.seleciona("contato","ContatoId",String.valueOf(id));
+                while (linhaContato.next())
+                {
+                    nome = linhaContato.getString("ContatoNome");
+                    endereco = linhaContato.getString("ContatoEndereco");
+                    cidade = linhaContato.getString("ContatoCidade");
+                }
+            }
+            catch (SQLException sqle)
+            {
+                System.out.println(sqle.getMessage());
+            }
+        }
+        else
+        {
+            nome = "Sem conexao!";
+        }
+
+        contato = new Contato(id, nome, telefones, emails, endereco, cidade);
+
+        return contato;
     }
 
     // Retorna os telefones do contato através do Id
-    public static ResultSet retornarTelefonesContato(int id)
+    public static ArrayList<String> retornarTelefonesContato(int id)
     {
-        String query = conexao.seleciona("telefone","Contato_ContatoId",String.valueOf(id));
-
-        return GerenciarConexao.executarQuery(query);
+        // ToDo
+        return null;
     }
 
     // Retorna os e-mails do contato através do Id
     public static ResultSet retornarEmailsContato(int id)
     {
-        // Fazer
+        // ToDo
         return null;
     }
 
     // Insere um contato
-    public static ResultSet inserirContato(ArrayList<String> infoContato)
+    public static void inserirContato(ArrayList<String> infoContato)
     {
-        String query = conexao.insere("contato", infoContato);
-
-        return GerenciarConexao.executarQuery(query);
+        conexao.insere("contato", infoContato);
     }
 
-    // Insere um contato
-    public static ResultSet pesquisarContato(String nome)
+    // Pesquisa um contato
+    public static ArrayList<Contato> pesquisarContato(String nome)
     {
-        // Fazer
+        // ToDo
         return null;
     }
 
-    // Insere um contato
-    public static ResultSet editarContato(int id, ArrayList<String> modificacoes)
+    // Edita um contato
+    public static Boolean editarContato(int id, ArrayList<String> modificacoes)
     {
-        // Fazer
+        // ToDo
         return null;
     }
 
-    // Insere um contato
-    public static ResultSet deletarContato(int id)
+    // Deleta um contato
+    public static Boolean deletarContato(int id)
     {
-        // Fazer
+        // ToDo
         return null;
     }
 }

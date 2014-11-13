@@ -10,17 +10,17 @@ public interface Conexao
     public boolean encerrar();
 
     // Seleciona todos os dados de uma tabela
-    public String seleciona(String tabela);
+    public ResultSet seleciona(String tabela);
 
     // Seleciona uma tabela com apenas uma condição
-    public String seleciona(String tabela, String condicao, String valor);
+    public ResultSet seleciona(String tabela, String condicao, String valor);
 
     // Seleciona uma tabela com inumeras condições
-    public String seleciona(String tabela, ArrayList<String> condicoes, ArrayList<String> valores);
+    public ResultSet seleciona(String tabela, ArrayList<String> condicoes, ArrayList<String> valores);
 
     // Insere em uma tabela com os valores em ordem
-    public String insere(String tabela, ArrayList<String> valores);
+    public ResultSet insere(String tabela, ArrayList<String> valores);
 
-    public String altera();
-    public String deleta();
+    public ResultSet altera();
+    public ResultSet deleta();
 }

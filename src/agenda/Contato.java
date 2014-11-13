@@ -1,8 +1,5 @@
 package agenda;
 
-import conexao.*;
-
-import java.sql.*;
 import java.util.*;
 
 public class Contato
@@ -16,26 +13,14 @@ public class Contato
     private String cidade;
 
     // Construtor
-    public Contato(int id)
+    public Contato(int id, String nome, ArrayList<String> telefones, ArrayList<String> emails, String endereco, String cidade)
     {
         this.id = id;
-        if(GerenciarConexao.getConexao()!=null)
-        {
-            try {
-                ResultSet linhaContato = GerenciarContato.retornarContato(this.id);
-                while (linhaContato.next()) {
-                    this.nome = linhaContato.getString("ContatoNome");
-                    this.endereco = linhaContato.getString("ContatoEndereco");
-                    this.cidade = linhaContato.getString("ContatoCidade");
-                }
-            } catch (SQLException sqle) {
-                System.out.println(sqle.getMessage());
-            }
-        }
-        else
-        {
-            this.nome = "Sem conexao!";
-        }
+        this.nome = nome;
+        this.telefones = telefones;
+        this.emails = emails;
+        this.endereco = endereco;
+        this.cidade = cidade;
     }
     
     // Getters

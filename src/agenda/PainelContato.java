@@ -61,7 +61,7 @@ public class PainelContato extends JPanel
 
     public static void setContato(int idContato)
     {
-        Contato contato = new Contato(idContato);
+        Contato contato = GerenciarContato.retornarContato(idContato);
 
         tituloLabel.setText(contato.getNome());
         nomeTField.setText(contato.getNome());

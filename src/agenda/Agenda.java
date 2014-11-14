@@ -8,10 +8,10 @@ public class Agenda
     private ArrayList<Contato> contatos;
 
     // Construtor
-    public Agenda()
+    public Agenda(int idAgenda)
     {
         // Adiciona Contatos na lista
-        this.contatos = GerenciarContato.retornarContatos();
+        this.contatos = GerenciarContato.retornarContatos(idAgenda);
     }
 
     public ArrayList<Contato> getContatos()

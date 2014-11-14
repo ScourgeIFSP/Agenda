@@ -5,7 +5,7 @@ import java.util.*;
 public class Contato
 {
     // Atributos do Contato
-    private final int id;
+    private int id;
     private String nome;
     private ArrayList<String> telefones;
     private ArrayList<String> emails;

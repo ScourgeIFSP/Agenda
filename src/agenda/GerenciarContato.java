@@ -11,7 +11,7 @@ public abstract class GerenciarContato
     private static Conexao conexao = GerenciarConexao.getConexao();
 
     // Retora a tabela Contato
-    public static ArrayList<Contato> retornarContatos()
+    public static ArrayList<Contato> retornarContatos(int idAgenda)
     {
         ArrayList<Contato> contatos = new ArrayList<>();
 
@@ -19,7 +19,7 @@ public abstract class GerenciarContato
         {
             try
             {
-                ResultSet linha = conexao.selecionar("contato");
+                ResultSet linha = conexao.selecionar("contato", "Agenda_AgendaId", String.valueOf(idAgenda));
 
                 while (linha.next())
                 {
@@ -40,26 +40,29 @@ public abstract class GerenciarContato
     }
 
     // Retorna um único Contato através do Id
-    public static Contato retornarContato(int id)
+    public static Contato retornarContato(int idContato)
     {
         Contato contato;
-        String nome = null;
+
+        String nome = "";
         ArrayList<String> telefones = null;
         ArrayList<String> emails = null;
-        String endereco = null;
-        String cidade = null;
+        String endereco = "";
+        String cidade = "";
 
         if(conexao!=null)
         {
             try
             {
-                ResultSet linhaContato = conexao.selecionar("contato", "ContatoId", String.valueOf(id));
+                ResultSet linhaContato = conexao.selecionar("contato", "ContatoId", String.valueOf(idContato));
                 while (linhaContato.next())
                 {
                     nome = linhaContato.getString("ContatoNome");
                     endereco = linhaContato.getString("ContatoEndereco");
                     cidade = linhaContato.getString("ContatoCidade");
                 }
+                telefones = null;
+                emails = null;
             }
             catch (SQLException sqle)
             {
@@ -71,30 +74,32 @@ public abstract class GerenciarContato
             nome = "Sem conexao!";
         }
 
-        contato = new Contato(id, nome, telefones, emails, endereco, cidade);
+        contato = new Contato(idContato, nome, telefones, emails, endereco, cidade);
 
         return contato;
     }
 
     // Retorna os telefones do contato através do Id
-    public static ArrayList<String> retornarTelefonesContato(int id)
+    public static ArrayList<String> retornarTelefonesContato(int idContato)
     {
         // ToDo
         return null;
     }
 
     // Retorna os e-mails do contato através do Id
-    public static ResultSet retornarEmailsContato(int id)
+    public static ArrayList<String> retornarEmailsContato(int idContato)
     {
         // ToDo
         return null;
     }
 
     // Insere um contato
-    public static void inserirContato(ArrayList<String> infoContato)
+    public static Boolean inserirContato(ArrayList<String> infoContato)
     {
         // ToDo
         conexao.inserir("contato", infoContato);
+
+        return null;
     }
 
     // Pesquisa um contato
@@ -105,14 +110,14 @@ public abstract class GerenciarContato
     }
 
     // Edita um contato
-    public static Boolean editarContato(int id, ArrayList<String> modificacoes)
+    public static Boolean editarContato(int idContato, ArrayList<String> modificacoes)
     {
         // ToDo
         return null;
     }
 
     // Deleta um contato
-    public static Boolean deletarContato(int id)
+    public static Boolean deletarContato(int idContato)
     {
         // ToDo
         return null;

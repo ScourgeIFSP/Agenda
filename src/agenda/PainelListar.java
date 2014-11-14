@@ -8,7 +8,7 @@ import javax.swing.*;
 public class PainelListar extends JPanel
 {
     // Variáveis globais
-    private Agenda agenda = new Agenda(3);
+    private int idAgenda = 3;
     private TituloString tituloLabel = new TituloString("Contatos");
     private JPanel contatosPanel = new JPanel();
     private JScrollPane contatosScroll = new JScrollPane(contatosPanel);
@@ -63,6 +63,7 @@ public class PainelListar extends JPanel
         cons.insets = new Insets(5, 5, 5, 5);
         cons.ipady = 40;
         cons.fill = GridBagConstraints.HORIZONTAL;
+        Agenda agenda = new Agenda(idAgenda);
 
         // Contato da lista
         ArrayList<Contato> contatos = agenda.getContatos();

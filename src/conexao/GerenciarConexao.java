@@ -19,6 +19,25 @@ public abstract class GerenciarConexao
         }
         catch (SQLException sqle)
         {
+            System.out.println("Query: "+query);
+            System.out.println("Query não foi executada. Mensagem: "+sqle);
+            return null;
+        }
+    }
+
+    public static Integer exercutarUpdate(String query)
+    {
+        try
+        {
+            Statement st = conexao.conectar().createStatement();
+            int resultado = st.executeUpdate(query) ;
+
+            System.out.println("Query: "+query);
+            return resultado;
+        }
+        catch (SQLException sqle)
+        {
+            System.out.println("Query: "+query);
             System.out.println("Query não foi executada. Mensagem: "+sqle);
             return null;
         }

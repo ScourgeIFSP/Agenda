@@ -90,7 +90,7 @@ public class ConexaoMySQL implements Conexao
     }
 
     // Insere em uma tabela com os valores em ordem
-    public ResultSet inserir(String tabela, ArrayList<String> valores)
+    public Integer inserir(String tabela, ArrayList<String> valores)
     {
         String query = "INSERT INTO "+tabela+" VALUES (";
 
@@ -107,10 +107,11 @@ public class ConexaoMySQL implements Conexao
             }
         }
 
-        return GerenciarConexao.executarQuery(query);
+        return GerenciarConexao.exercutarUpdate(query);
     }
 
-    public ResultSet alterar(String tabela, ArrayList<String> campos, ArrayList<String> alteracoes, ArrayList<String> condicoes, ArrayList<String> valoresCondicoes)
+    // Altera registro de uma tabela com inumeras condições
+    public Integer alterar(String tabela, ArrayList<String> campos, ArrayList<String> alteracoes, ArrayList<String> condicoes, ArrayList<String> valoresCondicoes)
     {
         String query = "UPDATE "+tabela+" SET ";
 
@@ -150,10 +151,11 @@ public class ConexaoMySQL implements Conexao
             i++;
         }
 
-        return GerenciarConexao.executarQuery(query);
+        return GerenciarConexao.exercutarUpdate(query);
     }
 
-    public ResultSet deletar(String tabela, ArrayList<String> condicoes, ArrayList<String> valoresCondicoes)
+    // Deleta registro de uma tabela com inumeras condições
+    public Integer deletar(String tabela, ArrayList<String> condicoes, ArrayList<String> valoresCondicoes)
     {
         String query = "DELETE FROM "+tabela+" WHERE ";//DELETE FROM empregados where codigo_empregado=1
 
@@ -174,6 +176,6 @@ public class ConexaoMySQL implements Conexao
             i++;
         }
 
-        return GerenciarConexao.executarQuery(query);
+        return GerenciarConexao.exercutarUpdate(query);
     }
 }

@@ -19,11 +19,11 @@ public interface Conexao
     public ResultSet selecionar(String tabela, ArrayList<String> condicoes, ArrayList<String> valores);
 
     // Insere registro em uma tabela com os valores em ordem correta
-    public ResultSet inserir(String tabela, ArrayList<String> valores);
+    public Integer inserir(String tabela, ArrayList<String> valores);
 
     // Altera registro de uma tabela com inumeras condições
-    public ResultSet alterar(String tabela, ArrayList<String> campos, ArrayList<String> alteracoes, ArrayList<String> condicoes, ArrayList<String> valoresCondicoes);
+    public Integer alterar(String tabela, ArrayList<String> campos, ArrayList<String> alteracoes, ArrayList<String> condicoes, ArrayList<String> valoresCondicoes);
 
     // Deleta registro de uma tabela com inumeras condições
-    public ResultSet deletar(String tabela, ArrayList<String> condicoes, ArrayList<String> valoresCondicoes);
+    public Integer deletar(String tabela, ArrayList<String> condicoes, ArrayList<String> valoresCondicoes);
 }

@@ -94,7 +94,7 @@ public class ConexaoMySQL implements Conexao
         for(String valor : valores)
         {
             query += valor;
-            if(valores.get(valores.size()-1) != valor)
+            if(!valor.equals(valores.get(valores.size()-1)))
             {
                 query += ", ";
             }
@@ -107,13 +107,70 @@ public class ConexaoMySQL implements Conexao
         return GerenciarConexao.executarQuery(query);
     }
 
-    public ResultSet alterar()
+    public ResultSet alterar(String tabela, ArrayList<String> campos, ArrayList<String> alteracoes, ArrayList<String> condicoes, ArrayList<String> valoresCondicoes)
     {
-        return null;
+        String query = "UPDATE "+tabela+" SET ";
+
+        int i = 0;
+        for(String campo : campos)
+        {
+            String alteracao = alteracoes.get(i);
+            query += campo+" = "+alteracao;
+
+            if(!campo.equals(campos.get(campos.size()-1)))
+            {
+                query += ", ";
+            }
+            else
+            {
+                query += " WHERE ";
+            }
+
+            i++;
+        }
+
+        i = 0;
+        for(String condicao : condicoes)
+        {
+            String valorCondicao = valoresCondicoes.get(i);
+            query += condicao+" = "+valorCondicao;
+
+            if(!condicao.equals(condicoes.get(condicoes.size()-1)))
+            {
+                query += ", ";
+            }
+            else
+            {
+                query += ";";
+            }
+
+            i++;
+        }
+
+        return GerenciarConexao.executarQuery(query);
     }
 
-    public ResultSet deletar()
+    public ResultSet deletar(String tabela, ArrayList<String> condicoes, ArrayList<String> valoresCondicoes)
     {
-        return null;
+        String query = "DELETE FROM "+tabela+" WHERE ";//DELETE FROM empregados where codigo_empregado=1
+
+        int i = 0;
+        for(String condicao : condicoes)
+        {
+            String valorCondicao = valoresCondicoes.get(i);
+            query += condicao+" = "+valorCondicao;
+            if(!condicao.equals(condicoes.get(condicoes.size()-1)))
+            {
+                query += ", ";
+            }
+            else
+            {
+                query += ");";
+            }
+
+            i++;
+        }
+
+        return GerenciarConexao.executarQuery(query);
     }
 }

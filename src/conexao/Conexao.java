@@ -21,6 +21,6 @@ public interface Conexao
     // Insere em uma tabela com os valores em ordem
     public ResultSet inserir(String tabela, ArrayList<String> valores);
 
-    public ResultSet alterar();
-    public ResultSet deletar();
+    public ResultSet alterar(String tabela, ArrayList<String> campos, ArrayList<String> alteracoes, ArrayList<String> condicoes, ArrayList<String> valoresCondicoes);
+    public ResultSet deletar(String tabela, ArrayList<String> condicoes, ArrayList<String> valoresCondicoes);
 }

@@ -1,5 +1,7 @@
 package agenda;
 
+import conexao.GerenciarConexao;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -42,7 +44,10 @@ public class PainelMenu extends JPanel
                 JanelaPrincipal.mostrarPainel(JanelaPrincipal.adicionarContatos));
 
         btnSair.addActionListener((ActionEvent e) ->
-                System.exit(0));
+                {
+                    GerenciarConexao.getConexao().encerrar();
+                    System.exit(0);
+                });
     }
     
     // Adiciona um componente

@@ -5,7 +5,7 @@ import java.util.*;
 
 public interface Conexao
 {
-    // Iniciar e encerrar conexões ao banco de dados
+    // Iniciar e encerrar conexões aos bancos de dados
     public Connection conectar();
     public boolean encerrar();
 
@@ -18,9 +18,12 @@ public interface Conexao
     // Seleciona uma tabela com inumeras condições
     public ResultSet selecionar(String tabela, ArrayList<String> condicoes, ArrayList<String> valores);
 
-    // Insere em uma tabela com os valores em ordem
+    // Insere registro em uma tabela com os valores em ordem correta
     public ResultSet inserir(String tabela, ArrayList<String> valores);
 
+    // Altera registro de uma tabela com inumeras condições
     public ResultSet alterar(String tabela, ArrayList<String> campos, ArrayList<String> alteracoes, ArrayList<String> condicoes, ArrayList<String> valoresCondicoes);
+
+    // Deleta registro de uma tabela com inumeras condições
     public ResultSet deletar(String tabela, ArrayList<String> condicoes, ArrayList<String> valoresCondicoes);
 }

@@ -9,20 +9,23 @@ public class ConexaoMySQL implements Conexao
 
     // Inicia conexão
     public Connection conectar()
-    {  
-    	try 
-    	{
-            // Configurações de conexão MySQL
-            String url = "jdbc:mysql://"+Acesso.getServidor()+"/"+Acesso.getBanco();
-            String driverName = "com.mysql.jdbc.Driver";
-            Class.forName(driverName);
-            con = DriverManager.getConnection(url,Acesso.getUsuario(),Acesso.getSenha());
+    {
+        try
+        {
+            if (con == null)
+            {
+                // Configurações de conexão MySQL
+                String url = "jdbc:mysql://" + Acesso.getServidor() + "/" + Acesso.getBanco();
+                String driverName = "com.mysql.jdbc.Driver";
+                Class.forName(driverName);
+                con = DriverManager.getConnection(url, Acesso.getUsuario(), Acesso.getSenha());
 
-            System.out.println("Conectado com Sucesso!");
+                System.out.println("Conectado com Sucesso!");
+            }
             return con;
-        } 
-    	catch (SQLException sqle)
-    	{
+        }
+        catch (SQLException sqle)
+        {
             System.out.println("Não foi possivel conectar no banco. Mensagem: "+sqle.getMessage());
             return null;
         }
@@ -159,7 +162,7 @@ public class ConexaoMySQL implements Conexao
         {
             String valorCondicao = valoresCondicoes.get(i);
             query += condicao+" = "+valorCondicao;
-            if(!condicao.equals(condicoes.get(condicoes.size()-1)))
+            if(!condicao.equals(condicoes.get(condicoes.size() - 1)))
             {
                 query += ", ";
             }

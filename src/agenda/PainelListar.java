@@ -8,10 +8,10 @@ import javax.swing.*;
 public class PainelListar extends JPanel
 {
     // Variáveis globais
-    private int idAgenda = 3;
-    private TituloString tituloLabel = new TituloString("Contatos");
-    private JPanel contatosPanel = new JPanel();
-    private JScrollPane contatosScroll = new JScrollPane(contatosPanel);
+    private int idAgenda = JanelaPrincipal.idAgenda;
+    private TituloString tituloLabel;
+    private JPanel contatosPanel;
+    private JScrollPane contatosScroll;
     
     // Contrutor
     public PainelListar()
@@ -25,42 +25,18 @@ public class PainelListar extends JPanel
     private void adcComponentes()
     {
         // Definindo variáveis
-        GridBagConstraints cons;
+        tituloLabel = new TituloString("Contatos");
+        contatosPanel = new JPanel();
+        contatosScroll = new JScrollPane(contatosPanel);
+        GridBagConstraints cons = new GridBagConstraints();
                 
         // Título
         tituloLabel.adicionar(this);
 
         // Lista
-        criarLista();
-
-        // Scrol Lista
-        contatosScroll.setBorder(null);
-        cons = new GridBagConstraints();
-        cons.insets = new Insets(0,0,0,0);
-        cons.weighty = 1;
-        cons.ipady = 40;
-        cons.fill = GridBagConstraints.BOTH;
-        cons.anchor = GridBagConstraints.NORTH;
-        this.add(contatosScroll, cons);
-    }
-
-    public void atualizarPainel()
-    {
-        // contatosScroll.remove(contatosPanel);
-        contatosPanel = new JPanel();
-        criarLista();
-        // contatosScroll.add(contatosPanel);
-    }
-
-    private void criarLista()
-    {
-        GridBagConstraints cons;
-
-        // Lista
         contatosPanel.setLayout(new GridBagLayout());
-        cons = new GridBagConstraints();
-        cons.weightx = 1;
         cons.insets = new Insets(5, 5, 5, 5);
+        cons.weightx = 1;
         cons.ipady = 40;
         cons.fill = GridBagConstraints.HORIZONTAL;
         Agenda agenda = new Agenda(idAgenda);
@@ -83,10 +59,16 @@ public class PainelListar extends JPanel
             int j = i;
             btn.addActionListener((ActionEvent e) ->
             {
-                PainelContato.setContato(contatos.get(j).getId());
+                JanelaPrincipal.painelContato.escolherContato(contatos.get(j).getId());
                 JanelaPrincipal.mostrarPainel(JanelaPrincipal.contato);
-
             });
         }
+
+        // Scrol Lista
+        contatosScroll.setBorder(null);
+        cons.insets = new Insets(0,0,0,0);
+        cons.weighty = 1;
+        cons.fill = GridBagConstraints.BOTH;
+        this.add(contatosScroll, cons);
     }
 }

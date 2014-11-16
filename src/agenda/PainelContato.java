@@ -6,13 +6,13 @@ import javax.swing.*;
 public class PainelContato extends JPanel
 {
     // Variáveis globais
-    private static TituloString tituloLabel = new TituloString("Nome do contato");
-    private static JTextField nomeTField = new JTextField();
-    private static JTextField telefoneTField = new JTextField();
-    private static JTextField emailTField = new JTextField();
-    private static JTextField endereçoTField = new JTextField();
-    private static JTextField cidadeTField = new JTextField();
-    private static JPanel gapPanel = new JPanel();
+    private TituloString tituloLabel;
+    private JTextField nomeTField;
+    private JTextField telefoneTField;
+    private JTextField emailTField;
+    private JTextField endereçoTField;
+    private JTextField cidadeTField;
+    private JPanel gapPanel;
 
     // Contrutor
     public PainelContato()
@@ -27,6 +27,13 @@ public class PainelContato extends JPanel
     {
         // Definindo variáveis
         GridBagConstraints cons;
+        tituloLabel = new TituloString("Contato");
+        nomeTField = new JTextField();
+        telefoneTField = new JTextField();
+        emailTField = new JTextField();
+        endereçoTField = new JTextField();
+        cidadeTField = new JTextField();
+        gapPanel = new JPanel();
 
         // Títulos
         tituloLabel.adicionar(this);
@@ -59,7 +66,7 @@ public class PainelContato extends JPanel
         this.add(componente, cons);
     }
 
-    public static void setContato(int idContato)
+    public void escolherContato(int idContato)
     {
         Contato contato = GerenciarContato.retornarContato(idContato);
 

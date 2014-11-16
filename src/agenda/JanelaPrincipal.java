@@ -6,25 +6,30 @@ import javax.swing.*;
 public class JanelaPrincipal extends JFrame 
 {
     // Variáveis globais
-    private final Container janela = this.getContentPane();
-    public static JPanel painelPrincipal = new JPanel();
-    public static PainelMenu painelMenu = new PainelMenu();
-    public static PainelListar painelListar = new PainelListar();
-    public static PainelContato painelContato = new PainelContato();
-    public static PainelAdicionar painelAdicionar = new PainelAdicionar();
+    private final Container janela;
+    public static JPanel painelPrincipal;
+    public static PainelMenu painelMenu;
+    public static PainelListar painelListar;
+    public static PainelContato painelContato;
+    public static PainelAdicionar painelAdicionar;
 
     // Strings referente aos cards do Painel Principal
-    public static final String listarContatos = "listar";
-    public static final String contato = "contato";
-    public static final String adicionarContatos = "adicionar";
+    public static String listarContatos;
+    public static String contato;
+    public static String adicionarContatos;
+
+    // Inteiro referente a agenda atual
+    public static Integer idAgenda;
 
     // Contrutor
-    public JanelaPrincipal()
+    public JanelaPrincipal(Integer idAgenda)
     {
+        JanelaPrincipal.idAgenda = idAgenda;
         this.setTitle("Agenda");
         this.setMinimumSize(new Dimension(700, 500));
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        janela = this.getContentPane();
         janela.setLayout(new GridBagLayout());
         
         adcComponentes();
@@ -34,10 +39,14 @@ public class JanelaPrincipal extends JFrame
     private void adcComponentes()
     {
         // Definindo variáveis
-        GridBagConstraints cons;
+        painelPrincipal = new JPanel();
+        painelMenu = new PainelMenu();
+        painelListar = new PainelListar();
+        painelContato = new PainelContato();
+        painelAdicionar = new PainelAdicionar();
+        GridBagConstraints cons = new GridBagConstraints();
 
         // Painel de menu
-        cons = new GridBagConstraints();
         cons.insets = new Insets(5,5,5,0);
         cons.weighty = 1;
         cons.fill = GridBagConstraints.BOTH;
@@ -53,8 +62,11 @@ public class JanelaPrincipal extends JFrame
         janela.add(painelPrincipal, cons);
         
         // Adicionando cards
+        listarContatos = "listar";
         painelPrincipal.add(painelListar, listarContatos);
+        contato = "contato";
         painelPrincipal.add(painelAdicionar, adicionarContatos);
+        adicionarContatos = "adicionar";
         painelPrincipal.add(painelContato, contato);
     }
 
@@ -63,5 +75,14 @@ public class JanelaPrincipal extends JFrame
     {
         CardLayout cl = (CardLayout)(painelPrincipal.getLayout());
         cl.show(painelPrincipal, card);
+    }
+
+    // Atualiza e mostra lista
+    public static void atualizarLista()
+    {
+        painelPrincipal.remove(painelListar);
+        painelListar = new PainelListar();
+        painelPrincipal.add(painelListar, listarContatos);
+        mostrarPainel(listarContatos);
     }
 }

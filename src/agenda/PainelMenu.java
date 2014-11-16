@@ -9,11 +9,11 @@ import javax.swing.*;
 public class PainelMenu extends JPanel
 {
     // Variáveis globais
-    private JButton btnContatos = new JButton("<html><center>Listar<br>Contatos</center></html>");
-    private JButton btnAdicionarContatos = new JButton("<html><center>Adicionar<br>Contato</center></html>");
-    private JButton btnEditar = new JButton("Editar");
-    private JButton btnExcluir = new JButton("Excluir");
-    private JButton btnSair = new JButton("Sair");
+    private JButton btnContatos;
+    private JButton btnAdicionarContatos;
+    private JButton btnEditar;
+    private JButton btnExcluir;
+    private JButton btnSair;
     
     // Contrutor
     public PainelMenu() 
@@ -26,6 +26,13 @@ public class PainelMenu extends JPanel
     // Adiciona componentes no painel
     private void adcComponentes()
     {
+        // Definindo variáveis
+        btnContatos = new JButton("<html><center>Listar<br>Contatos</center></html>");
+        btnAdicionarContatos = new JButton("<html><center>Adicionar<br>Contato</center></html>");
+        btnEditar = new JButton("Editar");
+        btnExcluir = new JButton("Excluir");
+        btnSair = new JButton("Sair");
+
         // Botões
         adcComponente(btnContatos, 0);
         adcComponente(btnAdicionarContatos, 1);
@@ -35,10 +42,9 @@ public class PainelMenu extends JPanel
 
         // Atribui ações aos botões
         btnContatos.addActionListener((ActionEvent e) ->
-                {
-                    JanelaPrincipal.painelListar.atualizarPainel();
-                    JanelaPrincipal.mostrarPainel(JanelaPrincipal.listarContatos);
-                });
+            {
+                JanelaPrincipal.atualizarLista();
+            });
 
         btnAdicionarContatos.addActionListener((ActionEvent e) ->
                 JanelaPrincipal.mostrarPainel(JanelaPrincipal.adicionarContatos));

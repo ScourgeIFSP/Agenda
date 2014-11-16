@@ -10,7 +10,7 @@ public class Principal
         GerenciarConexao.setConexao(new ConexaoMySQL());
 
         // Abre a janela
-        JanelaPrincipal jp = new JanelaPrincipal();
+        JanelaPrincipal jp = new JanelaPrincipal(3);
         jp.setVisible(true);
     }
 }

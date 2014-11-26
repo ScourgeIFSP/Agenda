@@ -43,10 +43,11 @@ public abstract class GerenciarContato
     public static Contato retornarContato(int idContato)
     {
         Contato contato;
+        String stringIdContato = String.valueOf(idContato);
 
         String nome = "";
-        ArrayList<String> telefones = null;
-        ArrayList<String> emails = null;
+        ArrayList<String> telefones = new ArrayList<>();
+        ArrayList<String> emails = new ArrayList<>();
         String endereco = "";
         String cidade = "";
 
@@ -54,15 +55,27 @@ public abstract class GerenciarContato
         {
             try
             {
-                ResultSet linhaContato = conexao.selecionar("contato", "ContatoId", String.valueOf(idContato));
+                ResultSet linhaContato = conexao.selecionar("contato", "ContatoId", stringIdContato);
                 while (linhaContato.next())
                 {
                     nome = linhaContato.getString("ContatoNome");
                     endereco = linhaContato.getString("ContatoEndereco");
                     cidade = linhaContato.getString("ContatoCidade");
                 }
-                telefones = null;
-                emails = null;
+
+                ResultSet linhaContatoTelefone = conexao.selecionar("telefone", "Contato_ContatoId", stringIdContato);
+                while (linhaContatoTelefone.next())
+                {
+                    String telefone = linhaContatoTelefone.getString("Telefone");
+                    telefones.add(telefone);
+                }
+
+                ResultSet linhaContatoEmail = conexao.selecionar("email", "Contato_ContatoId", stringIdContato);
+                while (linhaContatoEmail.next())
+                {
+                    String email = linhaContatoEmail.getString("Telefone");
+                    emails.add(email);
+                }
             }
             catch (SQLException sqle)
             {
@@ -77,20 +90,6 @@ public abstract class GerenciarContato
         contato = new Contato(idContato, nome, telefones, emails, endereco, cidade);
 
         return contato;
-    }
-
-    // Retorna os telefones do contato através do Id
-    public static ArrayList<String> retornarTelefonesContato(int idContato)
-    {
-        // ToDo
-        return null;
-    }
-
-    // Retorna os e-mails do contato através do Id
-    public static ArrayList<String> retornarEmailsContato(int idContato)
-    {
-        // ToDo
-        return null;
     }
 
     // Insere um contato

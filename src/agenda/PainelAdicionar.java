@@ -7,15 +7,17 @@ import javax.swing.*;
 public class PainelAdicionar extends JPanel
 {
     // Variáveis globais
-    private TituloString tituloLabel = new TituloString("Adicionar Contato");
-    private JTextField txtnome = new JTextField();
-    private JTextField txttelefone = new JTextField();
-    private JTextField txtemail = new JTextField();
-    private JTextField txtendereco = new JTextField();
-    private JTextField txtcidade = new JTextField();
-    private JPanel botoesPanel = new JPanel();
-    private JButton adicionarButton = new JButton("Adicionar");
-    private JButton cancelarButton = new JButton("Cancelar");
+    private TituloString tituloLabel;
+    private JTextField txtnome;
+    private JTextField txttelefone1;
+    private JTextField txttelefone2;
+    private JTextField txtemail1;
+    private JTextField txtemail2;
+    private JTextField txtendereco;
+    private JTextField txtcidade;
+    private JPanel botoesPanel;
+    private JButton adicionarButton;
+    private JButton cancelarButton;
    
     // Contrutor
     public PainelAdicionar()
@@ -29,20 +31,32 @@ public class PainelAdicionar extends JPanel
     private void adcComponentes()
     {
         // Definindo variáveis
-        GridBagConstraints cons;
+        tituloLabel = new TituloString("Adicionar Contato");
+        txtnome = new JTextField();
+        txttelefone1 = new JTextField();
+        txttelefone2 = new JTextField();
+        txtemail1 = new JTextField();
+        txtemail2 = new JTextField();
+        txtendereco = new JTextField();
+        txtcidade = new JTextField();
+        botoesPanel = new JPanel();
+        adicionarButton = new JButton("Adicionar");
+        cancelarButton = new JButton("Cancelar");
+        GridBagConstraints cons = new GridBagConstraints();
         
         // Título
         tituloLabel.adicionar(this);
         
         // Formulário
         adcCampo("Nome:", txtnome);
-        adcCampo("Telefone:", txttelefone);
-        adcCampo("E-mail:", txtemail);
+        adcCampo("Telefone 1:", txttelefone1);
+        adcCampo("Telefone 2:", txttelefone2);
+        adcCampo("E-mail 1:", txtemail1);
+        adcCampo("E-mail 2:", txtemail2);
         adcCampo("Endereço:", txtendereco);
         adcCampo("Cidade:", txtcidade);
         
         // Painel de botões
-        cons = new GridBagConstraints();
         botoesPanel.setLayout(new GridBagLayout());
         cons.weightx = 1;
         cons.weighty = 1;

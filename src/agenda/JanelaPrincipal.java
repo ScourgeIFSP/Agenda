@@ -75,7 +75,6 @@ public class JanelaPrincipal extends JFrame
     {
         CardLayout cl = (CardLayout)(painelPrincipal.getLayout());
         cl.show(painelPrincipal, card);
-        System.out.println(painelPrincipal.getComponentCount());
     }
 
     // Atualiza e mostra a lista de contatos

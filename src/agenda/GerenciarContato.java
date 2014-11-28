@@ -73,7 +73,7 @@ public abstract class GerenciarContato
                 ResultSet linhaContatoEmail = conexao.selecionar("email", "Contato_ContatoId", stringIdContato);
                 while (linhaContatoEmail.next())
                 {
-                    String email = linhaContatoEmail.getString("Telefone");
+                    String email = linhaContatoEmail.getString("Email");
                     emails.add(email);
                 }
             }

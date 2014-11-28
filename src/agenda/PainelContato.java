@@ -1,6 +1,7 @@
 package agenda;
 
 import java.awt.*;
+import java.util.ArrayList;
 import javax.swing.*;
 
 public class PainelContato extends JPanel
@@ -8,9 +9,7 @@ public class PainelContato extends JPanel
     // Variáveis globais
     private TituloString tituloLabel;
     private JTextField nomeTField;
-    private JTextField telefoneTField;
-    private JTextField emailTField;
-    private JTextField endereçoTField;
+    private JTextField enderecoTField;
     private JTextField cidadeTField;
     private JPanel gapPanel;
 
@@ -18,33 +17,78 @@ public class PainelContato extends JPanel
     public PainelContato()
     {
         this.setLayout(new GridBagLayout());
-
-        adcComponentes();
     }
 
-    // Adiciona componentes no painel
-    private void adcComponentes()
+    // Escolhe o contato a ser exibido
+    public void escolherContato(int idContato)
     {
+        Contato contato = GerenciarContato.retornarContato(idContato);
+        ArrayList<String> telefones = contato.getTelefones();
+        ArrayList<String> emails = contato.getEmails();
+
         // Definindo variáveis
-        GridBagConstraints cons;
         tituloLabel = new TituloString("Contato");
         nomeTField = new JTextField();
-        telefoneTField = new JTextField();
-        emailTField = new JTextField();
-        endereçoTField = new JTextField();
+        enderecoTField = new JTextField();
         cidadeTField = new JTextField();
         gapPanel = new JPanel();
 
         // Títulos
         tituloLabel.adicionar(this);
+        tituloLabel.setText(contato.getNome());
 
         // Campos
-        adcCampo("Nome:", nomeTField);
-        adcCampo("Endereço:", endereçoTField);
-        adcCampo("Cidade:", cidadeTField);
+            // - Nome
+            adcCampo("Nome:", nomeTField);
+            nomeTField.setText(contato.getNome());
+            // - Telefones
+            int i=0;
+            for (String telefone : telefones)
+            {
+                int j=i+1;
+                JTextField telefoneTField = new JTextField(telefone);
+                adcCampo("Telefone "+j+":", telefoneTField);
+                i++;
+            }
+            // - Emails
+            i=0;
+            for (String email : emails)
+            {
+                int j=i+1;
+                JTextField emailTField = new JTextField(email);
+                adcCampo("Email "+j+":", emailTField);
+                i++;
+            }
+            // - Endereço
+            try
+            {
+                if (!contato.getEndereco().equals(""))
+                {
+                    adcCampo("Endereço:", enderecoTField);
+                    enderecoTField.setText(contato.getEndereco());
+                }
+            }
+            catch (NullPointerException npe)
+            {
+                System.out.println("Exception: "+npe.getMessage());
+            }
+            // - Cidade
+            try
+            {
+                if (!contato.getEndereco().equals(""))
+                {
+                    adcCampo("Cidade:", cidadeTField);
+                    cidadeTField.setText(contato.getCidade());
+                }
+            }
+            catch (NullPointerException npe)
+            {
+                System.out.println("Exception: "+npe.getMessage());
+            }
+        // ---
 
         // Painel de ajuste
-        cons = new GridBagConstraints();
+        GridBagConstraints cons = new GridBagConstraints();
         cons.weighty = 1;
         this.add(gapPanel, cons);
     }
@@ -65,15 +109,4 @@ public class PainelContato extends JPanel
         cons.gridwidth = GridBagConstraints.REMAINDER;
         this.add(componente, cons);
     }
-
-    public void escolherContato(int idContato)
-    {
-        Contato contato = GerenciarContato.retornarContato(idContato);
-
-        tituloLabel.setText(contato.getNome());
-        nomeTField.setText(contato.getNome());
-        endereçoTField.setText(contato.getEndereco());
-        cidadeTField.setText(contato.getCidade());
-    }
-
 }

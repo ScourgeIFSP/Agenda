@@ -22,7 +22,7 @@ public class PainelListar extends JPanel
     }
     
     // Adiciona componentes no painel
-    private void adcComponentes()
+    public void adcComponentes()
     {
         // Definindo variáveis
         tituloLabel = new TituloString("Contatos");
@@ -59,8 +59,8 @@ public class PainelListar extends JPanel
             int j = i;
             btn.addActionListener((ActionEvent e) ->
             {
+                JanelaPrincipal.atualizarPainelContato();
                 JanelaPrincipal.painelContato.escolherContato(contatos.get(j).getId());
-                JanelaPrincipal.mostrarPainel(JanelaPrincipal.contato);
             });
         }
 

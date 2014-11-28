@@ -14,9 +14,9 @@ public class JanelaPrincipal extends JFrame
     public static PainelAdicionar painelAdicionar;
 
     // Strings referente aos cards do Painel Principal
-    public static String listarContatos;
-    public static String contato;
-    public static String adicionarContatos;
+    public static String painelListarCard;
+    public static String painelContatoCard;
+    public static String painelAdicionarCard;
 
     // Inteiro referente a agenda atual
     public static Integer idAgenda;
@@ -62,12 +62,12 @@ public class JanelaPrincipal extends JFrame
         janela.add(painelPrincipal, cons);
         
         // Adicionando cards
-        listarContatos = "listar";
-        painelPrincipal.add(painelListar, listarContatos);
-        contato = "contato";
-        painelPrincipal.add(painelAdicionar, adicionarContatos);
-        adicionarContatos = "adicionar";
-        painelPrincipal.add(painelContato, contato);
+        painelListarCard = "listar";
+        painelPrincipal.add(painelListar, painelListarCard);
+        painelAdicionarCard = "adicionar";
+        painelPrincipal.add(painelAdicionar, painelAdicionarCard);
+        painelContatoCard = "contato";
+        painelPrincipal.add(painelContato, painelContatoCard);
     }
 
     // Mostra painel desejado
@@ -75,14 +75,26 @@ public class JanelaPrincipal extends JFrame
     {
         CardLayout cl = (CardLayout)(painelPrincipal.getLayout());
         cl.show(painelPrincipal, card);
+        System.out.println(painelPrincipal.getComponentCount());
     }
 
-    // Atualiza e mostra lista
-    public static void atualizarLista()
+    // Atualiza e mostra a lista de contatos
+    public static void atualizarPainelLista()
     {
-        painelPrincipal.remove(painelListar);
-        painelListar = new PainelListar();
-        painelPrincipal.add(painelListar, listarContatos);
-        mostrarPainel(listarContatos);
+        painelListar.removeAll();
+        painelListar.adcComponentes();
+        painelPrincipal.add(painelListar,painelListarCard);
+        mostrarPainel(painelListarCard);
+        System.out.println(painelPrincipal.getComponentCount());
     }
+
+    // Atualiza e mostra o painel de contato
+    public static void atualizarPainelContato()
+    {
+        painelContato.removeAll();
+        painelPrincipal.add(painelContato,painelContatoCard);
+        mostrarPainel(painelContatoCard);
+        System.out.println(painelPrincipal.getComponentCount());
+    }
+
 }

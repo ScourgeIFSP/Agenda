@@ -85,7 +85,6 @@ public class JanelaPrincipal extends JFrame
         painelListar.adcComponentes();
         painelPrincipal.add(painelListar,painelListarCard);
         mostrarPainel(painelListarCard);
-        System.out.println(painelPrincipal.getComponentCount());
     }
 
     // Atualiza e mostra o painel de contato
@@ -94,7 +93,6 @@ public class JanelaPrincipal extends JFrame
         painelContato.removeAll();
         painelPrincipal.add(painelContato,painelContatoCard);
         mostrarPainel(painelContatoCard);
-        System.out.println(painelPrincipal.getComponentCount());
     }
 
 }

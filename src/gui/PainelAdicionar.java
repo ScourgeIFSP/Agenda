@@ -1,7 +1,10 @@
 package gui;
 
+import agenda.*;
+
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 import javax.swing.*;
 
 public class PainelAdicionar extends JPanel
@@ -43,10 +46,10 @@ public class PainelAdicionar extends JPanel
         adicionarButton = new JButton("Adicionar");
         cancelarButton = new JButton("Cancelar");
         GridBagConstraints cons = new GridBagConstraints();
-        
+
         // Título
         tituloLabel.adicionar(this);
-        
+
         // Formulário
         adcCampo("Nome:", txtnome);
         adcCampo("Telefone 1:", txttelefone1);
@@ -55,7 +58,7 @@ public class PainelAdicionar extends JPanel
         adcCampo("E-mail 2:", txtemail2);
         adcCampo("Endereço:", txtendereco);
         adcCampo("Cidade:", txtcidade);
-        
+
         // Painel de botões
         botoesPanel.setLayout(new GridBagLayout());
         cons.weightx = 1;
@@ -76,11 +79,28 @@ public class PainelAdicionar extends JPanel
         // Adiciona ações aos botões
         adicionarButton.addActionListener((ActionEvent e) ->
         {
+            int id = 0;
+            String nome = txtnome.getText();
+            ArrayList<String> telefones = new ArrayList<>();
+            String telefone1 = txttelefone1.getText();
+            String telefone2 = txttelefone2.getText();
+            telefones.add(telefone1);
+            telefones.add(telefone2);
+            ArrayList<String> emails = new ArrayList<>();
+            String email1 = txtemail1.getText();
+            String email2 = txtemail2.getText();
+            emails.add(email1);
+            emails.add(email2);
+            String endereco = txtendereco.getText();
+            String cidade = txtcidade.getText();
 
+            Contato novoContato = new Contato(id, nome, telefones, emails, endereco, cidade);
+
+            GerenciarContato.inserirContato(novoContato);
         });
 
         cancelarButton.addActionListener((ActionEvent e) ->
-                JanelaPrincipal.atualizarPainelLista()
+            JanelaPrincipal.atualizarPainelLista()
         );
     }
     

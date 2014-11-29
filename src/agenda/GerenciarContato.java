@@ -1,6 +1,7 @@
 package agenda;
 
 import conexao.*;
+import gui.JanelaPrincipal;
 
 import java.sql.*;
 import java.util.*;
@@ -93,10 +94,29 @@ public abstract class GerenciarContato
     }
 
     // Insere um contato
-    public static Boolean inserirContato(ArrayList<String> infoContato)
+    public static Boolean inserirContato(Contato contato)
     {
-        // ToDo
-        conexao.inserir("contato", infoContato);
+        String nome = contato.getNome();
+        String telefone1 = contato.getTelefones().get(0);
+        String telefone2 = contato.getTelefones().get(1);
+        String email1 = contato.getEmails().get(0);
+        String email2 = contato.getEmails().get(1);
+        String endereco = contato.getEndereco();
+        String cidade = contato.getCidade();
+
+        ArrayList<String> infoContato = new ArrayList<>();
+        infoContato.add(nome);
+        infoContato.add(endereco);
+        infoContato.add(cidade);
+        infoContato.add(String.valueOf(JanelaPrincipal.idAgenda));
+
+        ArrayList<String> campos = new ArrayList<>();
+        campos.add("ContatoNome");
+        campos.add("ContatoEndereco");
+        campos.add("ContatoCidade");
+        campos.add("Agenda_AgendaId");
+
+        conexao.inserir("contato", campos, infoContato);
 
         return null;
     }

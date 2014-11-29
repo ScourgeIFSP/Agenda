@@ -18,8 +18,8 @@ public interface Conexao
     // Seleciona uma tabela com inumeras condições
     public ResultSet selecionar(String tabela, ArrayList<String> condicoes, ArrayList<String> valores);
 
-    // Insere registro em uma tabela com os valores em ordem correta
-    public Integer inserir(String tabela, ArrayList<String> valores);
+    // Insere registro em uma tabela
+    public Integer inserir(String tabela, ArrayList<String> campos, ArrayList<String> valores);
 
     // Altera registro de uma tabela com inumeras condições
     public Integer alterar(String tabela, ArrayList<String> campos, ArrayList<String> alteracoes, ArrayList<String> condicoes, ArrayList<String> valoresCondicoes);

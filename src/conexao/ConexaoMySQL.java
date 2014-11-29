@@ -90,20 +90,35 @@ public class ConexaoMySQL implements Conexao
     }
 
     // Insere em uma tabela com os valores em ordem
-    public Integer inserir(String tabela, ArrayList<String> valores)
+    public Integer inserir(String tabela, ArrayList<String> campos, ArrayList<String> valores)
     {
-        String query = "INSERT INTO "+tabela+" VALUES (";
+        String query = "INSERT INTO "+tabela+" (";
+
+        for(String campo : campos)
+        {
+            query += campo;
+            if(!campo.equals(campos.get(campos.size()-1)))
+            {
+                query += ", ";
+            }
+            else
+            {
+                query += ")";
+            }
+        }
+
+        query += " VALUES ('";
 
         for(String valor : valores)
         {
             query += valor;
             if(!valor.equals(valores.get(valores.size()-1)))
             {
-                query += ", ";
+                query += "', '";
             }
             else
             {
-                query += ");";
+                query += "');";
             }
         }
 

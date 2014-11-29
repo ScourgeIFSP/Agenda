@@ -1,4 +1,7 @@
-package agenda;
+package gui;
+
+import agenda.Contato;
+import agenda.GerenciarContato;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -7,7 +10,7 @@ import javax.swing.*;
 public class PainelContato extends JPanel
 {
     // Variáveis globais
-    private TituloString tituloLabel;
+    private TituloPainel tituloLabel;
     private JTextField nomeTField;
     private JTextField enderecoTField;
     private JTextField cidadeTField;
@@ -27,7 +30,7 @@ public class PainelContato extends JPanel
         ArrayList<String> emails = contato.getEmails();
 
         // Definindo variáveis
-        tituloLabel = new TituloString("Contato");
+        tituloLabel = new TituloPainel("Contato");
         nomeTField = new JTextField();
         enderecoTField = new JTextField();
         cidadeTField = new JTextField();

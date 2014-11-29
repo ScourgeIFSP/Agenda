@@ -1,4 +1,4 @@
-package agenda;
+package gui;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -7,7 +7,7 @@ import javax.swing.*;
 public class PainelAdicionar extends JPanel
 {
     // Variáveis globais
-    private TituloString tituloLabel;
+    private TituloPainel tituloLabel;
     private JTextField txtnome;
     private JTextField txttelefone1;
     private JTextField txttelefone2;
@@ -31,7 +31,7 @@ public class PainelAdicionar extends JPanel
     private void adcComponentes()
     {
         // Definindo variáveis
-        tituloLabel = new TituloString("Adicionar Contato");
+        tituloLabel = new TituloPainel("Adicionar Contato");
         txtnome = new JTextField();
         txttelefone1 = new JTextField();
         txttelefone2 = new JTextField();

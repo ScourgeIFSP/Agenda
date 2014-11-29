@@ -1,4 +1,7 @@
-package agenda;
+package gui;
+
+import agenda.Agenda;
+import agenda.Contato;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -9,7 +12,7 @@ public class PainelListar extends JPanel
 {
     // Variáveis globais
     private int idAgenda = JanelaPrincipal.idAgenda;
-    private TituloString tituloLabel;
+    private TituloPainel tituloLabel;
     private JPanel contatosPanel;
     private JScrollPane contatosScroll;
     
@@ -25,7 +28,7 @@ public class PainelListar extends JPanel
     public void adcComponentes()
     {
         // Definindo variáveis
-        tituloLabel = new TituloString("Contatos");
+        tituloLabel = new TituloPainel("Contatos");
         contatosPanel = new JPanel();
         contatosScroll = new JScrollPane(contatosPanel);
         GridBagConstraints cons = new GridBagConstraints();

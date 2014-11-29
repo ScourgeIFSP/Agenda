@@ -1,11 +1,11 @@
-package agenda;
+package gui;
 
 import java.awt.*;
 import javax.swing.*;
 
-public class TituloString extends JLabel
+public class TituloPainel extends JLabel
 {
-    public TituloString (String tituloString)
+    public TituloPainel(String tituloString)
     {
         this.setText(tituloString);
         this.setFont(new Font(null, Font.BOLD, 20));

@@ -1,6 +1,7 @@
 package agenda;
 
 import conexao.*;
+import gui.JanelaPrincipal;
 
 public class Principal
 {

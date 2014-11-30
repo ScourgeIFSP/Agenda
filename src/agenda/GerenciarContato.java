@@ -155,6 +155,7 @@ public abstract class GerenciarContato
     {
         String contatoId = String.valueOf(contato.getId());
 
+        // Update na tabela contato
         ArrayList<String> campos = new ArrayList<>();
         campos.add("ContatoNome");
         campos.add("ContatoEndereco");
@@ -170,9 +171,9 @@ public abstract class GerenciarContato
         valoresCondicoes.add(contatoId);
 
         conexao.alterar("contato",campos,alteracoes,condicoes,valoresCondicoes);
-        conexao.deletar("telefone","Contato_ContatoId",contatoId);
-        conexao.deletar("email","Contato_ContatoId",contatoId);
 
+        // Deleta e re-insere informações na tabela telefone
+        conexao.deletar("telefone","Contato_ContatoId",contatoId);
         campos = new ArrayList<>();
         campos.add("Telefone");
         campos.add("Contato_ContatoId");
@@ -185,6 +186,8 @@ public abstract class GerenciarContato
         alteracoes.add(contatoId);
         conexao.inserir("telefone",campos,alteracoes);
 
+        // Deleta e re-insere informações na tabela email
+        conexao.deletar("email","Contato_ContatoId",contatoId);
         campos = new ArrayList<>();
         campos.add("Email");
         campos.add("Contato_ContatoId");

@@ -14,9 +14,9 @@ public class Agenda
         this.contatos = GerenciarContato.retornarContatos(idAgenda);
     }
 
+    // Retorna lista de Contatos
     public ArrayList<Contato> getContatos()
     {
-        // Retorna lista
         return contatos;
     }
 }

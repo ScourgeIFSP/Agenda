@@ -101,6 +101,7 @@ public class PainelAdicionar extends JPanel
             GerenciarContato.inserirContato(novoContato);
 
             limparCampos();
+            JanelaPrincipal.atualizarPainelLista();
         });
 
         cancelarButton.addActionListener((ActionEvent e) ->

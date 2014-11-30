@@ -11,8 +11,6 @@ public class PainelMenu extends JPanel
     // Variáveis globais
     private JButton btnContatos;
     private JButton btnAdicionarContatos;
-    private JButton btnEditar;
-    private JButton btnExcluir;
     private JButton btnSair;
     
     // Contrutor
@@ -29,15 +27,11 @@ public class PainelMenu extends JPanel
         // Definindo variáveis
         btnContatos = new JButton("<html><center>Listar<br>Contatos</center></html>");
         btnAdicionarContatos = new JButton("<html><center>Adicionar<br>Contato</center></html>");
-        btnEditar = new JButton("Editar");
-        btnExcluir = new JButton("Excluir");
         btnSair = new JButton("Sair");
 
         // Botões
         adcComponente(btnContatos, 0);
         adcComponente(btnAdicionarContatos, 1);
-        adcComponente(btnEditar, 2);
-        adcComponente(btnExcluir, 3);
         adcComponente(btnSair, 4);
 
         // Atribui ações aos botões

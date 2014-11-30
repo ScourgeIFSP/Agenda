@@ -151,9 +151,9 @@ public abstract class GerenciarContato
     }
 
     // Edita um contato
-    public static Boolean editarContato(int idContato, ArrayList<String> modificacoes)
+    public static Boolean editarContato(Contato contato)
     {
-        // TODO
+
         return null;
     }
 

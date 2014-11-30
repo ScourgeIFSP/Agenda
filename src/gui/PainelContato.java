@@ -63,31 +63,11 @@ public class PainelContato extends JPanel
                 i++;
             }
             // - Endereço
-            try
-            {
-                if (!contato.getEndereco().equals(""))
-                {
-                    adcCampo("Endereço:", enderecoTField);
-                    enderecoTField.setText(contato.getEndereco());
-                }
-            }
-            catch (NullPointerException npe)
-            {
-                System.out.println("Exception: "+npe.getMessage());
-            }
+            adcCampo("Endereço:", enderecoTField);
+            enderecoTField.setText(contato.getEndereco());
             // - Cidade
-            try
-            {
-                if (!contato.getEndereco().equals(""))
-                {
-                    adcCampo("Cidade:", cidadeTField);
-                    cidadeTField.setText(contato.getCidade());
-                }
-            }
-            catch (NullPointerException npe)
-            {
-                System.out.println("Exception: "+npe.getMessage());
-            }
+            adcCampo("Cidade:", cidadeTField);
+            cidadeTField.setText(contato.getCidade());
         // ---
 
         // Painel de ajuste

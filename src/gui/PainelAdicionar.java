@@ -80,16 +80,17 @@ public class PainelAdicionar extends JPanel
         adicionarButton.addActionListener((ActionEvent e) ->
         {
             int id = 0;
+
             String nome = txtnome.getText();
             ArrayList<String> telefones = new ArrayList<>();
             String telefone1 = txttelefone1.getText();
-            String telefone2 = txttelefone2.getText();
             telefones.add(telefone1);
+            String telefone2 = txttelefone2.getText();
             telefones.add(telefone2);
             ArrayList<String> emails = new ArrayList<>();
             String email1 = txtemail1.getText();
-            String email2 = txtemail2.getText();
             emails.add(email1);
+            String email2 = txtemail2.getText();
             emails.add(email2);
             String endereco = txtendereco.getText();
             String cidade = txtcidade.getText();
@@ -97,11 +98,15 @@ public class PainelAdicionar extends JPanel
             Contato novoContato = new Contato(id, nome, telefones, emails, endereco, cidade);
 
             GerenciarContato.inserirContato(novoContato);
+
+            limparCampos();
         });
 
         cancelarButton.addActionListener((ActionEvent e) ->
-            JanelaPrincipal.atualizarPainelLista()
-        );
+        {
+            limparCampos();
+            JanelaPrincipal.atualizarPainelLista();
+        });
     }
     
     // Adiciona um campo
@@ -119,5 +124,17 @@ public class PainelAdicionar extends JPanel
         cons.weightx = 1;  
         cons.gridwidth = GridBagConstraints.REMAINDER;  
         this.add(componente, cons);
+    }
+
+    // Limpa campos
+    private void limparCampos()
+    {
+        txtnome.setText("");
+        txttelefone1.setText("");
+        txttelefone2.setText("");
+        txtemail1.setText("");
+        txtemail2.setText("");
+        txtendereco.setText("");
+        txtcidade.setText("");
     }
 }

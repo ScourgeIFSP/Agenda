@@ -24,6 +24,9 @@ public interface Conexao
     // Altera registro de uma tabela com inumeras condições
     public Integer alterar(String tabela, ArrayList<String> campos, ArrayList<String> alteracoes, ArrayList<String> condicoes, ArrayList<String> valoresCondicoes);
 
+    // Deleta registro de uma tabela com apenas uma condição
+    public Integer deletar(String tabela, String condicao, String valor);
+
     // Deleta registro de uma tabela com inumeras condições
     public Integer deletar(String tabela, ArrayList<String> condicoes, ArrayList<String> valoresCondicoes);
 

@@ -169,6 +169,14 @@ public class ConexaoMySQL implements Conexao
         return GerenciarConexao.exercutarUpdate(query);
     }
 
+    // Deleta registro de uma tabela com apenas uma condição
+    public Integer deletar(String tabela, String condicao, String valor)
+    {
+        String query = "DELETE FROM "+tabela+" WHERE "+condicao+" = '"+valor+"';";
+
+        return GerenciarConexao.exercutarUpdate(query);
+    }
+
     // Deleta registro de uma tabela com inumeras condições
     public Integer deletar(String tabela, ArrayList<String> condicoes, ArrayList<String> valoresCondicoes)
     {

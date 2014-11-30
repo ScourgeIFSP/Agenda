@@ -160,7 +160,10 @@ public abstract class GerenciarContato
     // Deleta um contato
     public static Boolean deletarContato(int idContato)
     {
-        // TODO
+        conexao.deletar("telefone", "Contato_ContatoId", String.valueOf(idContato));
+        conexao.deletar("email", "Contato_ContatoId", String.valueOf(idContato));
+        conexao.deletar("contato", "ContatoId", String.valueOf(idContato));
+
         return null;
     }
 }

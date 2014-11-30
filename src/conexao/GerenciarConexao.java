@@ -4,6 +4,7 @@ import java.sql.*;
 
 public abstract class GerenciarConexao
 {
+    // Conexão atual
     private static Conexao conexao;
 
     // Métodos

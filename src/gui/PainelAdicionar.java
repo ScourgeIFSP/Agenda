@@ -66,6 +66,7 @@ public class PainelAdicionar extends JPanel
         cons.fill = GridBagConstraints.BOTH;
         cons.gridwidth = GridBagConstraints.REMAINDER;
         this.add(botoesPanel, cons);
+
         // Botões
         cons = new GridBagConstraints();
         cons.weighty = 1;

@@ -4,6 +4,7 @@ import agenda.Contato;
 import agenda.GerenciarContato;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import javax.swing.*;
 
@@ -14,7 +15,9 @@ public class PainelContato extends JPanel
     private JTextField nomeTField;
     private JTextField enderecoTField;
     private JTextField cidadeTField;
-    private JPanel gapPanel;
+    private JButton excluirButton;
+    private JButton editarButton;
+    private JPanel botoesJPanel;
 
     // Contrutor
     public PainelContato()
@@ -34,7 +37,9 @@ public class PainelContato extends JPanel
         nomeTField = new JTextField();
         enderecoTField = new JTextField();
         cidadeTField = new JTextField();
-        gapPanel = new JPanel();
+        botoesJPanel = new JPanel();
+        editarButton = new JButton("Editar");
+        excluirButton = new JButton("Excluir");
 
         // Títulos
         tituloLabel.adicionar(this);
@@ -70,10 +75,33 @@ public class PainelContato extends JPanel
             cidadeTField.setText(contato.getCidade());
         // ---
 
-        // Painel de ajuste
+        // Painel de botões
+        botoesJPanel.setLayout(new GridBagLayout());
         GridBagConstraints cons = new GridBagConstraints();
         cons.weighty = 1;
-        this.add(gapPanel, cons);
+        cons.weightx = 1;
+        cons.fill = GridBagConstraints.BOTH;
+        cons.gridwidth = GridBagConstraints.REMAINDER;
+        this.add(botoesJPanel, cons);
+
+        // Botões
+        cons = new GridBagConstraints();
+        cons.insets = new Insets(10,4,4,4);
+        cons.anchor = GridBagConstraints.NORTH;
+        cons.weighty = 1;
+        editarButton.setPreferredSize(new Dimension(100,30));
+        excluirButton.setPreferredSize(new Dimension(100,30));
+        cons.gridx = 0;
+        botoesJPanel.add(editarButton, cons);
+        cons.gridx = 1;
+        botoesJPanel.add(excluirButton, cons);
+
+        // Adiciona ações aos botões
+        excluirButton.addActionListener((ActionEvent e) ->
+        {
+            GerenciarContato.deletarContato(idContato);
+            JanelaPrincipal.atualizarPainelLista();
+        });
     }
 
     // Adiciona um campo

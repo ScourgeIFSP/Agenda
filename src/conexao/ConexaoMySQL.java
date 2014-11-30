@@ -134,15 +134,15 @@ public class ConexaoMySQL implements Conexao
         for(String campo : campos)
         {
             String alteracao = alteracoes.get(i);
-            query += campo+" = "+alteracao;
+            query += campo+" = '"+alteracao;
 
             if(!campo.equals(campos.get(campos.size()-1)))
             {
-                query += ", ";
+                query += "', ";
             }
             else
             {
-                query += " WHERE ";
+                query += "' WHERE ";
             }
 
             i++;

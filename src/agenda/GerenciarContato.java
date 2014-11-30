@@ -153,6 +153,49 @@ public abstract class GerenciarContato
     // Edita um contato
     public static Boolean editarContato(Contato contato)
     {
+        String contatoId = String.valueOf(contato.getId());
+
+        ArrayList<String> campos = new ArrayList<>();
+        campos.add("ContatoNome");
+        campos.add("ContatoEndereco");
+        campos.add("ContatoCidade");
+        ArrayList<String> alteracoes = new ArrayList<>();
+        alteracoes.add(contato.getNome());
+        alteracoes.add(contato.getEndereco());
+        alteracoes.add(contato.getCidade());
+
+        ArrayList<String> condicoes = new ArrayList<>();
+        condicoes.add("ContatoId");
+        ArrayList<String> valoresCondicoes = new ArrayList<>();
+        valoresCondicoes.add(contatoId);
+
+        conexao.alterar("contato",campos,alteracoes,condicoes,valoresCondicoes);
+        conexao.deletar("telefone","Contato_ContatoId",contatoId);
+        conexao.deletar("email","Contato_ContatoId",contatoId);
+
+        campos = new ArrayList<>();
+        campos.add("Telefone");
+        campos.add("Contato_ContatoId");
+        alteracoes = new ArrayList<>();
+        alteracoes.add(contato.getTelefones().get(0));
+        alteracoes.add(contatoId);
+        conexao.inserir("telefone",campos,alteracoes);
+        alteracoes = new ArrayList<>();
+        alteracoes.add(contato.getTelefones().get(1));
+        alteracoes.add(contatoId);
+        conexao.inserir("telefone",campos,alteracoes);
+
+        campos = new ArrayList<>();
+        campos.add("Email");
+        campos.add("Contato_ContatoId");
+        alteracoes = new ArrayList<>();
+        alteracoes.add(contato.getEmails().get(0));
+        alteracoes.add(contatoId);
+        conexao.inserir("email",campos,alteracoes);
+        alteracoes = new ArrayList<>();
+        alteracoes.add(contato.getEmails().get(1));
+        alteracoes.add(contatoId);
+        conexao.inserir("email",campos,alteracoes);
 
         return null;
     }

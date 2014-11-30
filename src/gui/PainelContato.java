@@ -13,6 +13,10 @@ public class PainelContato extends JPanel
     // Variáveis globais
     private TituloPainel tituloLabel;
     private JTextField nomeTField;
+    private JTextField telefone1TField;
+    private JTextField telefone2TField;
+    private JTextField email1TField;
+    private JTextField email2TField;
     private JTextField enderecoTField;
     private JTextField cidadeTField;
     private JButton excluirButton;
@@ -29,12 +33,14 @@ public class PainelContato extends JPanel
     public void escolherContato(int idContato)
     {
         Contato contato = GerenciarContato.retornarContato(idContato);
-        ArrayList<String> telefones = contato.getTelefones();
-        ArrayList<String> emails = contato.getEmails();
 
         // Definindo variáveis
         tituloLabel = new TituloPainel("Contato");
         nomeTField = new JTextField();
+        telefone1TField = new JTextField();
+        telefone2TField = new JTextField();
+        email1TField = new JTextField();
+        email2TField = new JTextField();
         enderecoTField = new JTextField();
         cidadeTField = new JTextField();
         botoesJPanel = new JPanel();
@@ -50,23 +56,17 @@ public class PainelContato extends JPanel
             adcCampo("Nome:", nomeTField);
             nomeTField.setText(contato.getNome());
             // - Telefones
-            int i=0;
-            for (String telefone : telefones)
-            {
-                int j=i+1;
-                JTextField telefoneTField = new JTextField(telefone);
-                adcCampo("Telefone "+j+":", telefoneTField);
-                i++;
-            }
+            ArrayList<String> telefones = contato.getTelefones();
+            adcCampo("Telefone 1:", telefone1TField);
+            telefone1TField.setText(telefones.get(0));
+            adcCampo("Telefone 2:", telefone2TField);
+            telefone2TField.setText(telefones.get(1));
             // - Emails
-            i=0;
-            for (String email : emails)
-            {
-                int j=i+1;
-                JTextField emailTField = new JTextField(email);
-                adcCampo("Email "+j+":", emailTField);
-                i++;
-            }
+            ArrayList<String> emails = contato.getEmails();
+            adcCampo("Email 1:", email1TField);
+            email1TField.setText(emails.get(0));
+            adcCampo("Email 2:", email2TField);
+            email2TField.setText(emails.get(1));
             // - Endereço
             adcCampo("Endereço:", enderecoTField);
             enderecoTField.setText(contato.getEndereco());
@@ -97,6 +97,27 @@ public class PainelContato extends JPanel
         botoesJPanel.add(excluirButton, cons);
 
         // Adiciona ações aos botões
+        editarButton.addActionListener((ActionEvent e) ->
+        {
+            Contato contatoEditado = GerenciarContato.retornarContato(idContato);
+
+            ArrayList<String> telefonesEditados = new ArrayList<>();
+            telefonesEditados.add(telefone1TField.getText());
+            telefonesEditados.add(telefone2TField.getText());
+            ArrayList<String> emailsEditados = new ArrayList<>();
+            emailsEditados.add(email1TField.getText());
+            emailsEditados.add(email2TField.getText());
+
+            contatoEditado.setNome(nomeTField.getText());
+            contatoEditado.setTelefones(telefonesEditados);
+            contatoEditado.setEmails(emailsEditados);
+            contatoEditado.setEndereco(enderecoTField.getText());
+            contatoEditado.setCidade(cidadeTField.getText());
+
+            GerenciarContato.editarContato(contatoEditado);
+            JanelaPrincipal.atualizarPainelLista();
+        });
+
         excluirButton.addActionListener((ActionEvent e) ->
         {
             GerenciarContato.deletarContato(idContato);

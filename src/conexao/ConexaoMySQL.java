@@ -89,7 +89,7 @@ public class ConexaoMySQL implements Conexao
         return GerenciarConexao.executarQuery(query);
     }
 
-    // Insere em uma tabela com os valores em ordem
+    // Insere registros em uma tabela
     public Integer inserir(String tabela, ArrayList<String> campos, ArrayList<String> valores)
     {
         String query = "INSERT INTO "+tabela+" (";

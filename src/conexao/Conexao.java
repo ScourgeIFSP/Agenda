@@ -26,4 +26,7 @@ public interface Conexao
 
     // Deleta registro de uma tabela com inumeras condições
     public Integer deletar(String tabela, ArrayList<String> condicoes, ArrayList<String> valoresCondicoes);
+
+    // Retorna último ID inserido de uma tabela
+    public int ultimoId(String tabela);
 }

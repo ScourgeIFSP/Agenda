@@ -97,12 +97,17 @@ public abstract class GerenciarContato
     public static Boolean inserirContato(Contato contato)
     {
         String nome = contato.getNome();
-        String telefone1 = contato.getTelefones().get(0);
-        String telefone2 = contato.getTelefones().get(1);
-        String email1 = contato.getEmails().get(0);
-        String email2 = contato.getEmails().get(1);
+        ArrayList<String> telefones = contato.getTelefones();
+        ArrayList<String> emails = contato.getEmails();
         String endereco = contato.getEndereco();
         String cidade = contato.getCidade();
+
+        // Insere registro na tabela contato
+        ArrayList<String> campos = new ArrayList<>();
+        campos.add("ContatoNome");
+        campos.add("ContatoEndereco");
+        campos.add("ContatoCidade");
+        campos.add("Agenda_AgendaId");
 
         ArrayList<String> infoContato = new ArrayList<>();
         infoContato.add(nome);
@@ -110,35 +115,52 @@ public abstract class GerenciarContato
         infoContato.add(cidade);
         infoContato.add(String.valueOf(JanelaPrincipal.idAgenda));
 
-        ArrayList<String> campos = new ArrayList<>();
-        campos.add("ContatoNome");
-        campos.add("ContatoEndereco");
-        campos.add("ContatoCidade");
-        campos.add("Agenda_AgendaId");
-
         conexao.inserir("contato", campos, infoContato);
 
-        return null;
-    }
+        int id = conexao.ultimoId("contato");
 
-    // Pesquisa um contato
-    public static ArrayList<Contato> pesquisarContato(String nome)
-    {
-        // ToDo
+        // Insere registro na tabela telefone
+        campos = new ArrayList<>();
+        campos.add("Telefone");
+        campos.add("Contato_ContatoId");
+
+        for (String telefone : telefones)
+        {
+            infoContato = new ArrayList<>();
+            infoContato.add(telefone);
+            infoContato.add(String.valueOf(id));
+
+            conexao.inserir("telefone", campos, infoContato);
+        }
+
+        // Insere registro na tabela email
+        campos = new ArrayList<>();
+        campos.add("Email");
+        campos.add("Contato_ContatoId");
+
+        for (String email : emails)
+        {
+            infoContato = new ArrayList<>();
+            infoContato.add(email);
+            infoContato.add(String.valueOf(id));
+
+            conexao.inserir("email", campos, infoContato);
+        }
+
         return null;
     }
 
     // Edita um contato
     public static Boolean editarContato(int idContato, ArrayList<String> modificacoes)
     {
-        // ToDo
+        // TODO
         return null;
     }
 
     // Deleta um contato
     public static Boolean deletarContato(int idContato)
     {
-        // ToDo
+        // TODO
         return null;
     }
 }

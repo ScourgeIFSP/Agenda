@@ -172,7 +172,7 @@ public class ConexaoMySQL implements Conexao
     // Deleta registro de uma tabela com inumeras condições
     public Integer deletar(String tabela, ArrayList<String> condicoes, ArrayList<String> valoresCondicoes)
     {
-        String query = "DELETE FROM "+tabela+" WHERE ";//DELETE FROM empregados where codigo_empregado=1
+        String query = "DELETE FROM "+tabela+" WHERE ";
 
         int i = 0;
         for(String condicao : condicoes)
@@ -192,5 +192,28 @@ public class ConexaoMySQL implements Conexao
         }
 
         return GerenciarConexao.exercutarUpdate(query);
+    }
+
+    // Retorna último ID inserido de uma tabela
+    public int ultimoId(String tabela)
+    {
+        String query = "SELECT * FROM "+tabela+" ORDER BY 1 DESC LIMIT 1;";
+
+        ResultSet linhaId = GerenciarConexao.executarQuery(query);
+        int id = 0;
+
+        try
+        {
+            while (linhaId.next())
+            {
+                id = linhaId.getInt(1);
+            }
+        }
+        catch(SQLException sqle)
+        {
+            System.out.println("SQL Exception (ultimoId()). Mensagem: "+sqle.getMessage() );
+        }
+
+        return id;
     }
 }

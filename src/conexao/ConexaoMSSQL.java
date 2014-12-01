@@ -198,7 +198,7 @@ public class ConexaoMSSQL
     // Retorna último ID inserido de uma tabela
     public int ultimoId(String tabela)
     {
-        String query = "SELECT * FROM "+tabela+" ORDER BY 1 DESC 1;";
+        String query = "SELECT TOP 1 * FROM "+tabela+" ORDER BY 1 DESC";
 
         ResultSet linhaId = GerenciarConexao.executarQuery(query);
         int id = 0;

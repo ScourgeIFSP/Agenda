@@ -1,10 +1,7 @@
 package conexao;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
+import java.sql.*;
+import java.util.*;
 
 public class ConexaoMSSQL
 {
@@ -115,7 +112,7 @@ public class ConexaoMSSQL
             }
         }
 
-        return GerenciarConexao.exercutarUpdate(query);
+        return GerenciarConexao.executarUpdate(query);
     }
 
     // Altera registro de uma tabela com inumeras condições
@@ -159,7 +156,7 @@ public class ConexaoMSSQL
             i++;
         }
 
-        return GerenciarConexao.exercutarUpdate(query);
+        return GerenciarConexao.executarUpdate(query);
     }
 
     // Deleta registro de uma tabela com apenas uma condição
@@ -167,7 +164,7 @@ public class ConexaoMSSQL
     {
         String query = "DELETE FROM "+tabela+" WHERE "+condicao+" = '"+valor+"'";
 
-        return GerenciarConexao.exercutarUpdate(query);
+        return GerenciarConexao.executarUpdate(query);
     }
 
     // Deleta registro de uma tabela com inumeras condições
@@ -192,7 +189,7 @@ public class ConexaoMSSQL
             i++;
         }
 
-        return GerenciarConexao.exercutarUpdate(query);
+        return GerenciarConexao.executarUpdate(query);
     }
 
     // Retorna último ID inserido de uma tabela

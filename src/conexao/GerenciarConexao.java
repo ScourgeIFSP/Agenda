@@ -26,7 +26,7 @@ public abstract class GerenciarConexao
         }
     }
 
-    public static Integer exercutarUpdate(String query)
+    public static Integer executarUpdate(String query)
     {
         try
         {

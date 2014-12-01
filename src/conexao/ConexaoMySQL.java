@@ -122,7 +122,7 @@ public class ConexaoMySQL implements Conexao
             }
         }
 
-        return GerenciarConexao.exercutarUpdate(query);
+        return GerenciarConexao.executarUpdate(query);
     }
 
     // Altera registro de uma tabela com inumeras condições
@@ -166,7 +166,7 @@ public class ConexaoMySQL implements Conexao
             i++;
         }
 
-        return GerenciarConexao.exercutarUpdate(query);
+        return GerenciarConexao.executarUpdate(query);
     }
 
     // Deleta registro de uma tabela com apenas uma condição
@@ -174,7 +174,7 @@ public class ConexaoMySQL implements Conexao
     {
         String query = "DELETE FROM "+tabela+" WHERE "+condicao+" = '"+valor+"';";
 
-        return GerenciarConexao.exercutarUpdate(query);
+        return GerenciarConexao.executarUpdate(query);
     }
 
     // Deleta registro de uma tabela com inumeras condições
@@ -199,7 +199,7 @@ public class ConexaoMySQL implements Conexao
             i++;
         }
 
-        return GerenciarConexao.exercutarUpdate(query);
+        return GerenciarConexao.executarUpdate(query);
     }
 
     // Retorna último ID inserido de uma tabela
